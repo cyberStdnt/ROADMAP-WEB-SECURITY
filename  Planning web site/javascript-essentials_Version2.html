@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Essentiel pour WebSec — WebSec Academy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🛡️</span>
+                <span class="logo-text">WebSec Academy</span>
+            </a>
+            <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="javascript-essentials.html" class="active">JavaScript</a></li>
+                <li><a href="outils.html">Outils</a></li>
+                <li><a href="ressources.html">Ressources</a></li>
+                <li><a href="cheatsheets.html">Cheat Sheets</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="page-hero">
+        <div class="hero-icon">📜</div>
+        <h1>JavaScript Essentiel pour <span class="gradient-text">Web Security</span></h1>
+        <p class="hero-desc">
+            Tu n'as PAS besoin de tout apprendre. Voici exactement les 25 leçons qu'il te faut sur 
+            <a href="https://javascript.info" target="_blank">javascript.info</a> — le reste, ignore-le.
+        </p>
+        
+        <div class="stats-row">
+            <div class="stat-box">
+                <span class="stat-num">25</span>
+                <span class="stat-label">Leçons</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-num">~7h</span>
+                <span class="stat-label">Total</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-num">80%</span>
+                <span class="stat-label">Ignoré</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- PROGRESS -->
+    <section class="progress-section">
+        <div class="container">
+            <div class="progress-card">
+                <div class="progress-header">
+                    <span class="progress-title">📊 Ta progression JavaScript</span>
+                    <span class="progress-percent" id="progressPercent">0%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progressBar"></div>
+                </div>
+                <p class="progress-hint">Tes progrès sont sauvegardés automatiquement ✓</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY THIS MATTERS -->
+    <section class="section">
+        <div class="container">
+            <div class="info-box accent">
+                <h3>💡 Pourquoi cette liste ?</h3>
+                <p>
+                    JavaScript.info est excellent mais <strong>exhaustif</strong> — c'est une référence pour devs, 
+                    pas un cours pour la sécurité. Cette liste filtre uniquement ce qui sert en pentest web :
+                </p>
+                <ul>
+                    <li><strong>DOM manipulation</strong> → comprendre les attaques XSS</li>
+                    <li><strong>Fetch/AJAX</strong> → comprendre CSRF et CORS</li>
+                    <li><strong>Cookies/Storage</strong> → vol de session</li>
+                    <li><strong>Événements</strong> → vecteurs d'injection</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHASE 1 -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="phase-card">
+                <div class="phase-header">
+                    <div class="phase-number">1</div>
+                    <div class="phase-info">
+                        <h3>Les Fondamentaux JavaScript</h3>
+                        <span>Variables, conditions, boucles, fonctions — la base</span>
+                    </div>
+                    <span class="phase-time">⏱️ ~2h</span>
+                </div>
+                <div class="phase-body">
+                    <div class="chapter">
+                        <div class="chapter-title">📁 Chapitre 2 : JavaScript Fundamentals</div>
+                        <div class="lessons-list">
+                            <div class="lesson-item">
+                                <input type="checkbox" data-id="js-2-1">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">2.1 Hello, world!</div>
+                                    <div class="lesson-meta">5 min • Premier script</div>
+                                </div>
+                                <a href="https://javascript.info/hello-world" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                            <div class="lesson-item">
+                                <input type="checkbox" data-id="js-2-4">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">2.4 Variables</div>
+                                    <div class="lesson-meta">10 min • let, const, var</div>
+                                </div>
+                                <a href="https://javascript.info/variables" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                            <div class="lesson-item important">
+                                <input type="checkbox" data-id="js-2-5">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">2.5 Data types</div>
+                                    <div class="lesson-meta">15 min • string, number, boolean, null, undefined, object</div>
+                                </div>
+                                <span class="badge warning">Important</span>
+                                <a href="https://javascript.info/types" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                            <div class="lesson-item">
+                                <input type="checkbox" data-id="js-2-6">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">2.6 Interaction: alert, prompt, confirm</div>
+                                    <div class="lesson-meta">10 min • Dialogues basiques</div>
+                                </div>
+                                <a href="https://javascript.info/alert-prompt-confirm" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                            <div class="lesson-item">
+                                <input type="checkbox" data-id="js-2-7">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">2.7 Type Conversions</div>
+                                    <div class="lesson-meta">10 min • String(), Number(), Boolean()</div>
+                                </div>
+                                <a href="https://javascript.info/type-conversions" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                            <div class="lesson-item">
+                                <input type="checkbox" data-id="js-2-8">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">2.8 Basic operators, maths</div>
+                                    <div class="lesson-meta">10 min • +, -, *, /, %, **</div>
+                                </div>
+                                <a href="https://javascript.info/operators" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                            <div class="lesson-item">
+                                <input type="checkbox" data-id="js-2-9">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">2.9 Comparisons</div>
+                                    <div class="lesson-meta">10 min • ==, ===, !=, !==</div>
+                                </div>
+                                <a href="https://javascript.info/comparison" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                            <div class="lesson-item">
+                                <input type="checkbox" data-id="js-2-10">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">2.10 Conditional branching: if, '?'</div>
+                                    <div class="lesson-meta">10 min • if, else, ternaire</div>
+                                </div>
+                                <a href="https://javascript.info/ifelse" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                            <div class="lesson-item">
+                                <input type="checkbox" data-id="js-2-11">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">2.11 Logical operators</div>
+                                    <div class="lesson-meta">10 min • &&, ||, !</div>
+                                </div>
+                                <a href="https://javascript.info/logical-operators" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                            <div class="lesson-item">
+                                <input type="checkbox" data-id="js-2-13">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">2.13 Loops: while and for</div>
+                                    <div class="lesson-meta">10 min • while, for, break, continue</div>
+                                </div>
+                                <a href="https://javascript.info/while-for" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                            <div class="lesson-item important">
+                                <input type="checkbox" data-id="js-2-15">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">2.15 Functions</div>
+                                    <div class="lesson-meta">15 min • Déclaration, paramètres, return</div>
+                                </div>
+                                <span class="badge warning">Important</span>
+                                <a href="https://javascript.info/function-basics" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                            <div class="lesson-item">
+                                <input type="checkbox" data-id="js-2-17">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">2.17 Arrow functions, the basics</div>
+                                    <div class="lesson-meta">10 min • () => {}</div>
+                                </div>
+                                <a href="https://javascript.info/arrow-functions-basics" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHASE 2 -->
+    <section class="section">
+        <div class="container">
+            <div class="phase-card">
+                <div class="phase-header">
+                    <div class="phase-number">2</div>
+                    <div class="phase-info">
+                        <h3>Objets & Types de données</h3>
+                        <span>Objets, arrays, strings, JSON — manipulation de données</span>
+                    </div>
+                    <span class="phase-time">⏱️ ~1h30</span>
+                </div>
+                <div class="phase-body">
+                    <div class="chapter">
+                        <div class="chapter-title">📁 Chapitre 4 : Objects basics</div>
+                        <div class="lessons-list">
+                            <div class="lesson-item important">
+                                <input type="checkbox" data-id="js-4-1">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">4.1 Objects</div>
+                                    <div class="lesson-meta">15 min • Création, accès, modification</div>
+                                </div>
+                                <span class="badge warning">Important</span>
+                                <a href="https://javascript.info/object" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                            <div class="lesson-item">
+                                <input type="checkbox" data-id="js-4-4">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">4.4 Object methods, "this"</div>
+                                    <div class="lesson-meta">15 min • Méthodes et contexte</div>
+                                </div>
+                                <a href="https://javascript.info/object-methods" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chapter">
+                        <div class="chapter-title">📁 Chapitre 5 : Data types</div>
+                        <div class="lessons-list">
+                            <div class="lesson-item">
+                                <input type="checkbox" data-id="js-5-2">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">5.2 Numbers</div>
+                                    <div class="lesson-meta">10 min • parseInt, parseFloat, toFixed</div>
+                                </div>
+                                <a href="https://javascript.info/number" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                            <div class="lesson-item important">
+                                <input type="checkbox" data-id="js-5-3">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">5.3 Strings</div>
+                                    <div class="lesson-meta">15 min • Manipulation de chaînes (essentiel XSS)</div>
+                                </div>
+                                <span class="badge warning">Important</span>
+                                <a href="https://javascript.info/string" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                            <div class="lesson-item important">
+                                <input type="checkbox" data-id="js-5-4">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">5.4 Arrays</div>
+                                    <div class="lesson-meta">15 min • Tableaux, push, pop, length</div>
+                                </div>
+                                <span class="badge warning">Important</span>
+                                <a href="https://javascript.info/array" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                            <div class="lesson-item">
+                                <input type="checkbox" data-id="js-5-5">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">5.5 Array methods</div>
+                                    <div class="lesson-meta">20 min • map, filter, forEach, find</div>
+                                </div>
+                                <a href="https://javascript.info/array-methods" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                            <div class="lesson-item critical">
+                                <input type="checkbox" data-id="js-5-12">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">5.12 JSON methods, toJSON</div>
+                                    <div class="lesson-meta">15 min • JSON.parse, JSON.stringify (CRITIQUE pour APIs)</div>
+                                </div>
+                                <span class="badge danger">Critique</span>
+                                <a href="https://javascript.info/json" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHASE 3 -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="phase-card">
+                <div class="phase-header">
+                    <div class="phase-number">3</div>
+                    <div class="phase-info">
+                        <h3>DOM & Événements (Browser)</h3>
+                        <span>Manipulation du document — ESSENTIEL pour comprendre XSS</span>
+                    </div>
+                    <span class="phase-time">⏱️ ~1h15</span>
+                </div>
+                <div class="phase-body">
+                    <div class="chapter">
+                        <div class="chapter-title">📁 Partie 2, Chapitre 1 : Document</div>
+                        <div class="lessons-list">
+                            <div class="lesson-item">
+                                <input type="checkbox" data-id="js-b-1-1">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">1.1 Browser environment, specs</div>
+                                    <div class="lesson-meta">10 min • window, document, navigator</div>
+                                </div>
+                                <a href="https://javascript.info/browser-environment" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                            <div class="lesson-item important">
+                                <input type="checkbox" data-id="js-b-1-3">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">1.3 Walking the DOM</div>
+                                    <div class="lesson-meta">15 min • parentNode, childNodes, siblings</div>
+                                </div>
+                                <span class="badge warning">Important</span>
+                                <a href="https://javascript.info/dom-navigation" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                            <div class="lesson-item critical">
+                                <input type="checkbox" data-id="js-b-1-4">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">1.4 Searching: getElement*, querySelector*</div>
+                                    <div class="lesson-meta">15 min • getElementById, querySelector (CRITIQUE)</div>
+                                </div>
+                                <span class="badge danger">Critique</span>
+                                <a href="https://javascript.info/searching-elements-dom" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                            <div class="lesson-item critical">
+                                <input type="checkbox" data-id="js-b-1-6">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">1.6 Attributes and properties</div>
+                                    <div class="lesson-meta">15 min • getAttribute, setAttribute, dataset</div>
+                                </div>
+                                <span class="badge danger">Critique</span>
+                                <a href="https://javascript.info/dom-attributes-and-properties" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                            <div class="lesson-item critical">
+                                <input type="checkbox" data-id="js-b-1-7">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">1.7 Modifying the document</div>
+                                    <div class="lesson-meta">15 min • innerHTML, createElement, append (CRITIQUE XSS)</div>
+                                </div>
+                                <span class="badge danger">Critique</span>
+                                <a href="https://javascript.info/modifying-document" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chapter">
+                        <div class="chapter-title">📁 Partie 2, Chapitre 2 : Events</div>
+                        <div class="lessons-list">
+                            <div class="lesson-item critical">
+                                <input type="checkbox" data-id="js-b-2-1">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">2.1 Introduction to browser events</div>
+                                    <div class="lesson-meta">15 min • onclick, addEventListener (vecteurs XSS)</div>
+                                </div>
+                                <span class="badge danger">Critique</span>
+                                <a href="https://javascript.info/introduction-browser-events" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                            <div class="lesson-item">
+                                <input type="checkbox" data-id="js-b-2-3">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">2.3 Event delegation</div>
+                                    <div class="lesson-meta">10 min • Propagation des événements</div>
+                                </div>
+                                <a href="https://javascript.info/event-delegation" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chapter">
+                        <div class="chapter-title">📁 Partie 2, Chapitre 4 : Forms</div>
+                        <div class="lessons-list">
+                            <div class="lesson-item important">
+                                <input type="checkbox" data-id="js-b-4-4">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">4.4 Forms: event and method submit</div>
+                                    <div class="lesson-meta">10 min • Soumission de formulaires</div>
+                                </div>
+                                <span class="badge warning">Important</span>
+                                <a href="https://javascript.info/forms-submit" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHASE 4 -->
+    <section class="section">
+        <div class="container">
+            <div class="phase-card highlight">
+                <div class="phase-header">
+                    <div class="phase-number">4</div>
+                    <div class="phase-info">
+                        <h3>🔥 Réseau & Stockage (LE PLUS IMPORTANT)</h3>
+                        <span>Fetch, CORS, Cookies, Storage — le cœur de la sécurité web</span>
+                    </div>
+                    <span class="phase-time">⏱️ ~1h</span>
+                </div>
+                <div class="phase-body">
+                    <div class="chapter">
+                        <div class="chapter-title">📁 Partie 3, Chapitre 3 : Network requests</div>
+                        <div class="lessons-list">
+                            <div class="lesson-item critical">
+                                <input type="checkbox" data-id="js-n-3-1">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">3.1 Fetch</div>
+                                    <div class="lesson-meta">20 min • Requêtes HTTP en JS (CRITIQUE CSRF/APIs)</div>
+                                </div>
+                                <span class="badge danger">Critique</span>
+                                <a href="https://javascript.info/fetch" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                            <div class="lesson-item critical">
+                                <input type="checkbox" data-id="js-n-3-5">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">3.5 Fetch: Cross-Origin Requests (CORS)</div>
+                                    <div class="lesson-meta">15 min • Same-Origin Policy, CORS (CRITIQUE)</div>
+                                </div>
+                                <span class="badge danger">Critique</span>
+                                <a href="https://javascript.info/fetch-crossorigin" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chapter">
+                        <div class="chapter-title">📁 Partie 3, Chapitre 4 : Storing data</div>
+                        <div class="lessons-list">
+                            <div class="lesson-item critical">
+                                <input type="checkbox" data-id="js-n-4-1">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">4.1 Cookies, document.cookie</div>
+                                    <div class="lesson-meta">15 min • Cookies, HttpOnly, Secure, SameSite</div>
+                                </div>
+                                <span class="badge danger">Critique</span>
+                                <a href="https://javascript.info/cookie" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                            <div class="lesson-item critical">
+                                <input type="checkbox" data-id="js-n-4-2">
+                                <div class="lesson-info">
+                                    <div class="lesson-name">4.2 LocalStorage, sessionStorage</div>
+                                    <div class="lesson-meta">10 min • Stockage côté client (tokens, données)</div>
+                                </div>
+                                <span class="badge danger">Critique</span>
+                                <a href="https://javascript.info/localstorage" target="_blank" class="lesson-link">Lire →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- À IGNORER -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="ignore-box">
+                <h3>❌ Ce qu'il faut IGNORER (pour l'instant)</h3>
+                <p>Ces sujets sont intéressants mais pas nécessaires pour débuter en web security :</p>
+                
+                <div class="ignore-grid">
+                    <div class="ignore-category">
+                        <h4>Partie 1 — Language</h4>
+                        <ul>
+                            <li>2.12 Switch statement</li>
+                            <li>3.x Code quality (tout)</li>
+                            <li>4.2 Object references</li>
+                            <li>4.3 Garbage collection</li>
+                            <li>4.5 Constructor, "new"</li>
+                            <li>4.6 Optional chaining</li>
+                            <li>4.7 Symbol type</li>
+                            <li>4.8 Object to primitive</li>
+                            <li>5.6-5.11 (Iterables, Map, etc.)</li>
+                            <li>6.x Advanced functions (tout)</li>
+                            <li>9.x Classes (tout)</li>
+                            <li>10.x Error handling</li>
+                            <li>11.x Promises, async/await</li>
+                            <li>12.x Generators</li>
+                            <li>13.x Modules</li>
+                        </ul>
+                    </div>
+                    <div class="ignore-category">
+                        <h4>Partie 2 — Browser</h4>
+                        <ul>
+                            <li>1.2 DOM tree (trop détaillé)</li>
+                            <li>1.5 Node properties</li>
+                            <li>1.8-1.11 (Styles, Sizes...)</li>
+                            <li>2.2 Bubbling/capturing</li>
+                            <li>2.4-2.5 (Default actions, Custom events)</li>
+                            <li>3.x UI Events (Mouse, Keyboard...)</li>
+                        </ul>
+                    </div>
+                    <div class="ignore-category">
+                        <h4>Partie 3 — Additional</h4>
+                        <ul>
+                            <li>2.x Binary data, files</li>
+                            <li>3.2-3.4 (FormData, Progress...)</li>
+                            <li>5.x Animation</li>
+                            <li>6.x Web components</li>
+                            <li>7.x Regular expressions</li>
+                        </ul>
+                    </div>
+                    <div class="ignore-category later">
+                        <h4>⏰ À apprendre PLUS TARD</h4>
+                        <p>Quand tu feras des attaques avancées :</p>
+                        <ul>
+                            <li><a href="https://javascript.info/prototype-inheritance" target="_blank">Prototypes</a> → Prototype Pollution</li>
+                            <li><a href="https://javascript.info/cross-window-communication" target="_blank">Cross-window communication</a> → postMessage attacks</li>
+                            <li><a href="https://javascript.info/clickjacking" target="_blank">Clickjacking</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEXT STEP -->
+    <section class="section">
+        <div class="container">
+            <div class="next-step-card">
+                <div class="next-icon">🚀</div>
+                <h2>Terminé ? Passe à l'action !</h2>
+                <p>
+                    Une fois ces 25 leçons lues, tu as assez de JavaScript pour commencer 
+                    le parcours de sécurité web. Tu apprendras le reste en contexte.
+                </p>
+                <div class="next-buttons">
+                    <a href="roadmap.html" class="btn btn-primary btn-large">
+                        Commencer le parcours 8 semaines →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🛡️</span>
+                    <span class="logo-text">WebSec Academy</span>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="roadmap.html">Roadmap</a>
+                    <a href="outils.html">Outils</a>
+                    <a href="ressources.html">Ressources</a>
+                </div>
+                <p class="footer-note">Pratique uniquement sur des cibles autorisées ⚠️</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

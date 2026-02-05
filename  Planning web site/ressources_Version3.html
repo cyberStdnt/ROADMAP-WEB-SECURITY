@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ressources — WebSec Academy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🛡️</span>
+                <span class="logo-text">WebSec Academy</span>
+            </a>
+            <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="javascript-essentials.html">JavaScript</a></li>
+                <li><a href="outils.html">Outils</a></li>
+                <li><a href="ressources.html" class="active">Ressources</a></li>
+                <li><a href="cheatsheets.html">Cheat Sheets</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="page-hero">
+        <div class="hero-icon">📚</div>
+        <h1>Ressources <span class="gradient-text">& Liens</span></h1>
+        <p class="hero-desc">
+            Les meilleures ressources pour apprendre la sécurité web, triées par catégorie.
+        </p>
+    </header>
+
+    <!-- PLATEFORMES D'APPRENTISSAGE -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>🎓 Plateformes d'apprentissage</h2>
+                <p>Labs et cours structurés pour pratiquer</p>
+            </div>
+            
+            <div class="resources-grid">
+                <div class="resource-card featured">
+                    <div class="resource-header">
+                        <span class="resource-icon">🏆</span>
+                        <span class="resource-badge">Recommandé #1</span>
+                    </div>
+                    <h3>PortSwigger Web Security Academy</h3>
+                    <p>LA référence pour apprendre le pentest web. Gratuit, complet, avec des labs interactifs. C'est la base de notre roadmap.</p>
+                    <div class="resource-tags">
+                        <span>Gratuit</span>
+                        <span>Labs</span>
+                        <span>Complet</span>
+                    </div>
+                    <a href="https://portswigger.net/web-security" target="_blank" class="btn btn-primary btn-small">Accéder →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <span class="resource-icon">🎯</span>
+                    </div>
+                    <h3>TryHackMe</h3>
+                    <p>Plateforme gamifiée avec des "rooms" guidées. Bon pour les débutants absolus.</p>
+                    <div class="resource-tags">
+                        <span>Freemium</span>
+                        <span>Guidé</span>
+                        <span>Gamifié</span>
+                    </div>
+                    <a href="https://tryhackme.com/" target="_blank" class="btn btn-small">Accéder →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <span class="resource-icon">📦</span>
+                    </div>
+                    <h3>HackTheBox</h3>
+                    <p>Machines virtuelles à compromettre. Plus difficile, pour après les bases.</p>
+                    <div class="resource-tags">
+                        <span>Freemium</span>
+                        <span>Machines</span>
+                        <span>Challenges</span>
+                    </div>
+                    <a href="https://www.hackthebox.com/" target="_blank" class="btn btn-small">Accéder →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <span class="resource-icon">🐙</span>
+                    </div>
+                    <h3>PentesterLab</h3>
+                    <p>Exercices pratiques très bien expliqués. Certains gratuits, la plupart payants.</p>
+                    <div class="resource-tags">
+                        <span>Freemium</span>
+                        <span>Exercices</span>
+                    </div>
+                    <a href="https://pentesterlab.com/" target="_blank" class="btn btn-small">Accéder →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPLICATIONS VULNÉRABLES -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2>🎯 Applications vulnérables (pour pratiquer)</h2>
+                <p>Cibles légales pour t'entraîner localement</p>
+            </div>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h3>OWASP Juice Shop</h3>
+                    <p>Application moderne (Node.js/Angular) avec 100+ vulnérabilités. Recommandé!</p>
+                    <pre><code>docker run --rm -p 3000:3000 bkimminich/juice-shop</code></pre>
+                    <a href="https://owasp.org/www-project-juice-shop/" target="_blank" class="btn btn-small">Site officiel →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h3>OWASP WebGoat</h3>
+                    <p>Application Java avec des leçons guidées pour chaque vulnérabilité.</p>
+                    <a href="https://owasp.org/www-project-webgoat/" target="_blank" class="btn btn-small">Site officiel →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h3>DVWA</h3>
+                    <p>Damn Vulnerable Web Application. Classique, en PHP, avec niveaux de difficulté.</p>
+                    <a href="https://github.com/digininja/DVWA" target="_blank" class="btn btn-small">GitHub →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h3>VulnHub</h3>
+                    <p>Collection de machines virtuelles vulnérables à télécharger.</p>
+                    <a href="https://www.vulnhub.com/" target="_blank" class="btn btn-small">Accéder →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOCUMENTATION & RÉFÉRENCES -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>📖 Documentation & Références</h2>
+            </div>
+            
+            <div class="resources-list">
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>OWASP Top 10</h4>
+                        <p>Les 10 vulnérabilités web les plus critiques. À connaître par cœur.</p>
+                    </div>
+                    <a href="https://owasp.org/www-project-top-ten/" target="_blank" class="resource-link">owasp.org →</a>
+                </div>
+                
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>OWASP Testing Guide</h4>
+                        <p>Guide complet de méthodologie de test de sécurité web.</p>
+                    </div>
+                    <a href="https://owasp.org/www-project-web-security-testing-guide/" target="_blank" class="resource-link">owasp.org →</a>
+                </div>
+                
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>HackTricks</h4>
+                        <p>Wiki énorme avec des techniques de hacking pour chaque technologie.</p>
+                    </div>
+                    <a href="https://book.hacktricks.xyz/" target="_blank" class="resource-link">hacktricks.xyz →</a>
+                </div>
+                
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>PayloadsAllTheThings</h4>
+                        <p>Collection de payloads pour tous les types de vulnérabilités.</p>
+                    </div>
+                    <a href="https://github.com/swisskyrepo/PayloadsAllTheThings" target="_blank" class="resource-link">GitHub →</a>
+                </div>
+                
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>MDN Web Docs</h4>
+                        <p>Documentation web de référence (HTTP, JavaScript, DOM, etc.)</p>
+                    </div>
+                    <a href="https://developer.mozilla.org/" target="_blank" class="resource-link">developer.mozilla.org →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BUG BOUNTY -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2>💰 Plateformes Bug Bounty</h2>
+                <p>Pour gagner de l'argent en trouvant des vulnérabilités (après avoir maîtrisé les bases!)</p>
+            </div>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h3>HackerOne</h3>
+                    <p>La plus grande plateforme de bug bounty. Beaucoup de programmes publics.</p>
+                    <a href="https://www.hackerone.com/" target="_blank" class="btn btn-small">Accéder →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h3>Bugcrowd</h3>
+                    <p>Autre grande plateforme avec des programmes variés.</p>
+                    <a href="https://www.bugcrowd.com/" target="_blank" class="btn btn-small">Accéder →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h3>Intigriti</h3>
+                    <p>Plateforme européenne, bonne réputation.</p>
+                    <a href="https://www.intigriti.com/" target="_blank" class="btn btn-small">Accéder →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h3>YesWeHack</h3>
+                    <p>Plateforme française, programmes européens.</p>
+                    <a href="https://www.yeswehack.com/" target="_blank" class="btn btn-small">Accéder →</a>
+                </div>
+            </div>
+            
+            <div class="info-box warning" style="margin-top: 30px;">
+                <h4>⚠️ Important</h4>
+                <p>Ne commence le bug bounty qu'après avoir terminé notre parcours de 8 semaines. 
+                Sinon tu vas perdre du temps sur des programmes où tout a déjà été trouvé. 
+                Les bases d'abord!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- YOUTUBE & BLOGS -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>📺 YouTube & Blogs</h2>
+                <p>Contenu gratuit de qualité</p>
+            </div>
+            
+            <div class="resources-list">
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>LiveOverflow</h4>
+                        <p>Excellentes vidéos sur le hacking, très pédagogique.</p>
+                    </div>
+                    <a href="https://www.youtube.com/@LiveOverflow" target="_blank" class="resource-link">YouTube →</a>
+                </div>
+                
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>John Hammond</h4>
+                        <p>CTF writeups et tutoriels, très actif.</p>
+                    </div>
+                    <a href="https://www.youtube.com/@_JohnHammond" target="_blank" class="resource-link">YouTube →</a>
+                </div>
+                
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>IppSec</h4>
+                        <p>Walkthrough de machines HackTheBox, très détaillé.</p>
+                    </div>
+                    <a href="https://www.youtube.com/@ippsec" target="_blank" class="resource-link">YouTube →</a>
+                </div>
+                
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>NahamSec</h4>
+                        <p>Bug bounty tips et interviews de hackers.</p>
+                    </div>
+                    <a href="https://www.youtube.com/@NahamSec" target="_blank" class="resource-link">YouTube →</a>
+                </div>
+                
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>PortSwigger Research</h4>
+                        <p>Blog technique de PortSwigger, nouvelles techniques d'attaque.</p>
+                    </div>
+                    <a href="https://portswigger.net/research" target="_blank" class="resource-link">Blog →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2>🎖️ Certifications (optionnel)</h2>
+                <p>Utiles pour le CV, mais l'expérience pratique compte plus</p>
+            </div>
+            
+            <div class="certs-grid">
+                <div class="cert-card">
+                    <h4>eWPT</h4>
+                    <p>eLearnSecurity Web Penetration Tester. Pratique et abordable.</p>
+                    <span class="cert-price">~$400</span>
+                </div>
+                <div class="cert-card">
+                    <h4>OSCP</h4>
+                    <p>Offensive Security Certified Professional. La référence, mais difficile.</p>
+                    <span class="cert-price">~$1500+</span>
+                </div>
+                <div class="cert-card">
+                    <h4>BSCP</h4>
+                    <p>Burp Suite Certified Practitioner. Par PortSwigger, axé web.</p>
+                    <span class="cert-price">~$100</span>
+                </div>
+                <div class="cert-card">
+                    <h4>CEH</h4>
+                    <p>Certified Ethical Hacker. Connu mais moins pratique.</p>
+                    <span class="cert-price">~$1200</span>
+                </div>
+            </div>
+            
+            <p class="certs-note">💡 Conseil : Fais d'abord le parcours gratuit, puis vise la BSCP ou eWPT comme première certification.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🛡️</span>
+                    <span class="logo-text">WebSec Academy</span>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="roadmap.html">Roadmap</a>
+                    <a href="javascript-essentials.html">JavaScript</a>
+                    <a href="outils.html">Outils</a>
+                    <a href="ressources.html">Ressources</a>
+                    <a href="cheatsheets.html">Cheat Sheets</a>
+                </div>
+                <p class="footer-note">⚠️ Pratique uniquement sur des cibles autorisées</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outils — WebSec Academy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🛡️</span>
+                <span class="logo-text">WebSec Academy</span>
+            </a>
+            <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="javascript-essentials.html">JavaScript</a></li>
+                <li><a href="outils.html" class="active">Outils</a></li>
+                <li><a href="ressources.html">Ressources</a></li>
+                <li><a href="cheatsheets.html">Cheat Sheets</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="page-hero">
+        <div class="hero-icon">🔧</div>
+        <h1>Outils <span class="gradient-text">Recommandés</span></h1>
+        <p class="hero-desc">
+            Le minimum viable pour commencer. Tu n'as pas besoin de 50 outils — 
+            maîtrise d'abord ceux-ci.
+        </p>
+    </header>
+
+    <!-- ESSENTIELS -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>✅ Essentiels (à installer maintenant)</h2>
+                <p>Ces outils sont indispensables pour suivre le parcours</p>
+            </div>
+            
+            <div class="tools-grid">
+                <div class="tool-card essential">
+                    <div class="tool-header">
+                        <span class="tool-icon">🔍</span>
+                        <span class="tool-badge essential">Essentiel</span>
+                    </div>
+                    <h3>Burp Suite Community</h3>
+                    <p class="tool-desc">Le proxy de référence pour intercepter, modifier et analyser le trafic HTTP. Standard de l'industrie.</p>
+                    <div class="tool-features">
+                        <span>Proxy</span>
+                        <span>Repeater</span>
+                        <span>Intruder (limité)</span>
+                        <span>Decoder</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://portswigger.net/burp/communitydownload" target="_blank" class="btn btn-primary btn-small">Télécharger</a>
+                        <a href="https://portswigger.net/burp/documentation" target="_blank" class="btn btn-outline btn-small">Documentation</a>
+                    </div>
+                </div>
+                
+                <div class="tool-card essential">
+                    <div class="tool-header">
+                        <span class="tool-icon">🦎</span>
+                        <span class="tool-badge essential">Alternative</span>
+                    </div>
+                    <h3>OWASP ZAP</h3>
+                    <p class="tool-desc">Alternative open source à Burp. Gratuit et complet, mais interface moins intuitive.</p>
+                    <div class="tool-features">
+                        <span>Proxy</span>
+                        <span>Scanner auto</span>
+                        <span>Fuzzer</span>
+                        <span>API</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://www.zaproxy.org/download/" target="_blank" class="btn btn-primary btn-small">Télécharger</a>
+                        <a href="https://www.zaproxy.org/docs/" target="_blank" class="btn btn-outline btn-small">Documentation</a>
+                    </div>
+                </div>
+                
+                <div class="tool-card essential">
+                    <div class="tool-header">
+                        <span class="tool-icon">🌐</span>
+                        <span class="tool-badge essential">Essentiel</span>
+                    </div>
+                    <h3>Navigateur + DevTools</h3>
+                    <p class="tool-desc">Firefox ou Chrome avec les outils de développement (F12). Indispensable pour analyser le DOM, le réseau, le storage.</p>
+                    <div class="tool-features">
+                        <span>Network tab</span>
+                        <span>Console</span>
+                        <span>Storage</span>
+                        <span>Elements</span>
+                    </div>
+                    <div class="tool-tips">
+                        <p>💡 Firefox est souvent préféré car plus configurable pour le proxy</p>
+                    </div>
+                </div>
+                
+                <div class="tool-card essential">
+                    <div class="tool-header">
+                        <span class="tool-icon">🥤</span>
+                        <span class="tool-badge essential">Essentiel</span>
+                    </div>
+                    <h3>OWASP Juice Shop</h3>
+                    <p class="tool-desc">Application web volontairement vulnérable pour t'entraîner. Moderne et réaliste.</p>
+                    <div class="tool-features">
+                        <span>XSS</span>
+                        <span>SQLi</span>
+                        <span>IDOR</span>
+                        <span>JWT</span>
+                    </div>
+                    <pre><code># Installation via Docker
+docker run --rm -p 3000:3000 bkimminich/juice-shop</code></pre>
+                    <div class="tool-actions">
+                        <a href="https://owasp.org/www-project-juice-shop/" target="_blank" class="btn btn-primary btn-small">Site officiel</a>
+                        <a href="https://pwning.owasp-juice.shop/" target="_blank" class="btn btn-outline btn-small">Guide (spoilers!)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RECOMMANDÉS -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2>👍 Recommandés (à ajouter progressivement)</h2>
+                <p>Utiles mais pas obligatoires pour commencer</p>
+            </div>
+            
+            <div class="tools-grid">
+                <div class="tool-card recommended">
+                    <div class="tool-header">
+                        <span class="tool-icon">🐳</span>
+                        <span class="tool-badge recommended">Recommandé</span>
+                    </div>
+                    <h3>Docker</h3>
+                    <p class="tool-desc">Pour lancer facilement des applications vulnérables sans polluer ton système.</p>
+                    <div class="tool-actions">
+                        <a href="https://docs.docker.com/get-docker/" target="_blank" class="btn btn-small">Installer Docker</a>
+                    </div>
+                </div>
+                
+                <div class="tool-card recommended">
+                    <div class="tool-header">
+                        <span class="tool-icon">📮</span>
+                        <span class="tool-badge recommended">Recommandé</span>
+                    </div>
+                    <h3>Postman / Insomnia</h3>
+                    <p class="tool-desc">Pour tester les APIs de manière organisée. Plus pratique que curl pour les débutants.</p>
+                    <div class="tool-actions">
+                        <a href="https://www.postman.com/downloads/" target="_blank" class="btn btn-small">Postman</a>
+                        <a href="https://insomnia.rest/download" target="_blank" class="btn btn-small btn-outline">Insomnia</a>
+                    </div>
+                </div>
+                
+                <div class="tool-card recommended">
+                    <div class="tool-header">
+                        <span class="tool-icon">💻</span>
+                        <span class="tool-badge recommended">Recommandé</span>
+                    </div>
+                    <h3>curl</h3>
+                    <p class="tool-desc">Outil en ligne de commande pour faire des requêtes HTTP. Déjà installé sur Linux/Mac.</p>
+                    <pre><code># Exemple
+curl -i -X POST http://target.com/api \
+  -H "Content-Type: application/json" \
+  -d '{"user":"admin"}'</code></pre>
+                </div>
+                
+                <div class="tool-card recommended">
+                    <div class="tool-header">
+                        <span class="tool-icon">📝</span>
+                        <span class="tool-badge recommended">Recommandé</span>
+                    </div>
+                    <h3>Obsidian / Notion</h3>
+                    <p class="tool-desc">Pour prendre des notes structurées en Markdown. Essentiel pour tes writeups.</p>
+                    <div class="tool-actions">
+                        <a href="https://obsidian.md/" target="_blank" class="btn btn-small">Obsidian</a>
+                        <a href="https://www.notion.so/" target="_blank" class="btn btn-small btn-outline">Notion</a>
+                    </div>
+                </div>
+                
+                <div class="tool-card recommended">
+                    <div class="tool-header">
+                        <span class="tool-icon">🐧</span>
+                        <span class="tool-badge recommended">Recommandé</span>
+                    </div>
+                    <h3>Kali Linux (VM)</h3>
+                    <p class="tool-desc">Distribution Linux avec tous les outils de sécurité préinstallés. En VM ou dual boot.</p>
+                    <div class="tool-actions">
+                        <a href="https://www.kali.org/get-kali/" target="_blank" class="btn btn-small">Télécharger Kali</a>
+                    </div>
+                </div>
+                
+                <div class="tool-card recommended">
+                    <div class="tool-header">
+                        <span class="tool-icon">🔑</span>
+                        <span class="tool-badge recommended">Recommandé</span>
+                    </div>
+                    <h3>jwt.io</h3>
+                    <p class="tool-desc">Décodeur JWT en ligne. Indispensable pour analyser les tokens.</p>
+                    <div class="tool-actions">
+                        <a href="https://jwt.io/" target="_blank" class="btn btn-small">Ouvrir jwt.io</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POUR PLUS TARD -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>⏰ Pour plus tard (niveau intermédiaire+)</h2>
+                <p>Tu n'en as pas besoin maintenant, mais garde-les en tête</p>
+            </div>
+            
+            <div class="tools-grid compact">
+                <div class="tool-card-mini">
+                    <h4>ffuf</h4>
+                    <p>Fuzzer rapide pour découvrir des fichiers/répertoires cachés</p>
+                    <a href="https://github.com/ffuf/ffuf" target="_blank">GitHub →</a>
+                </div>
+                <div class="tool-card-mini">
+                    <h4>sqlmap</h4>
+                    <p>Automatisation de l'exploitation SQLi (apprends d'abord manuellement!)</p>
+                    <a href="https://sqlmap.org/" target="_blank">Site →</a>
+                </div>
+                <div class="tool-card-mini">
+                    <h4>Nuclei</h4>
+                    <p>Scanner de vulnérabilités basé sur des templates</p>
+                    <a href="https://nuclei.projectdiscovery.io/" target="_blank">Site →</a>
+                </div>
+                <div class="tool-card-mini">
+                    <h4>Amass</h4>
+                    <p>Reconnaissance et énumération de sous-domaines</p>
+                    <a href="https://github.com/owasp-amass/amass" target="_blank">GitHub →</a>
+                </div>
+                <div class="tool-card-mini">
+                    <h4>Nmap</h4>
+                    <p>Scanner de ports et services réseau</p>
+                    <a href="https://nmap.org/" target="_blank">Site →</a>
+                </div>
+                <div class="tool-card-mini">
+                    <h4>Wireshark</h4>
+                    <p>Analyseur de paquets réseau (niveau plus bas que HTTP)</p>
+                    <a href="https://www.wireshark.org/" target="_blank">Site →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXTENSIONS NAVIGATEUR -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2>🧩 Extensions navigateur utiles</h2>
+            </div>
+            
+            <div class="extensions-grid">
+                <div class="extension-item">
+                    <h4>FoxyProxy</h4>
+                    <p>Switcher de proxy rapide — basculer entre Burp et connexion directe</p>
+                </div>
+                <div class="extension-item">
+                    <h4>Wappalyzer</h4>
+                    <p>Détecte les technologies utilisées par un site (framework, CMS, etc.)</p>
+                </div>
+                <div class="extension-item">
+                    <h4>Cookie Editor</h4>
+                    <p>Modifier les cookies facilement sans passer par les DevTools</p>
+                </div>
+                <div class="extension-item">
+                    <h4>HackBar (Firefox)</h4>
+                    <p>Barre d'outils pour encoder/décoder et tester des payloads</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SETUP RECOMMANDÉ -->
+    <section class="section">
+        <div class="container">
+            <div class="setup-recommendation">
+                <h2>🎯 Setup minimum recommandé pour commencer</h2>
+                <div class="setup-checklist">
+                    <div class="setup-check">
+                        <span class="check-icon">✓</span>
+                        <span>Burp Suite Community (ou ZAP)</span>
+                    </div>
+                    <div class="setup-check">
+                        <span class="check-icon">✓</span>
+                        <span>Firefox avec FoxyProxy</span>
+                    </div>
+                    <div class="setup-check">
+                        <span class="check-icon">✓</span>
+                        <span>Docker + Juice Shop</span>
+                    </div>
+                    <div class="setup-check">
+                        <span class="check-icon">✓</span>
+                        <span>Éditeur de notes (Obsidian/Notion/VS Code)</span>
+                    </div>
+                </div>
+                <p class="setup-note">C'est tout ! Tu n'as besoin de rien d'autre pour commencer le parcours.</p>
+                <a href="roadmap.html#setup" class="btn btn-primary">Voir les instructions de setup →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🛡️</span>
+                    <span class="logo-text">WebSec Academy</span>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="roadmap.html">Roadmap</a>
+                    <a href="javascript-essentials.html">JavaScript</a>
+                    <a href="outils.html">Outils</a>
+                    <a href="ressources.html">Ressources</a>
+                    <a href="cheatsheets.html">Cheat Sheets</a>
+                </div>
+                <p class="footer-note">⚠️ Pratique uniquement sur des cibles autorisées</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

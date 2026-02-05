@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSec Academy — Apprends la Sécurité Web</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🛡️</span>
+                <span class="logo-text">WebSec Academy</span>
+            </a>
+            <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Accueil</a></li>
+                <li><a href="roadmap.html">Roadmap 8 Semaines</a></li>
+                <li><a href="javascript-essentials.html">JavaScript Essentiel</a></li>
+                <li><a href="outils.html">Outils</a></li>
+                <li><a href="ressources.html">Ressources</a></li>
+                <li><a href="cheatsheets.html">Cheat Sheets</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🎯 Parcours complet pour débutants</div>
+            <h1>Deviens <span class="gradient-text">Pentester Web</span> en 8 semaines</h1>
+            <p class="hero-desc">
+                Un programme structuré pour apprendre la sécurité web de zéro. 
+                Uniquement l'essentiel, pas de perte de temps.
+            </p>
+            <div class="hero-buttons">
+                <a href="roadmap.html" class="btn btn-primary">
+                    <span>🚀</span> Commencer le parcours
+                </a>
+                <a href="javascript-essentials.html" class="btn btn-secondary">
+                    <span>📚</span> Prérequis JavaScript
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">Semaines</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-number">1-2h</span>
+                    <span class="stat-label">Par jour</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Labs pratiques</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-number">10+</span>
+                    <span class="stat-label">Writeups</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="code-window">
+                <div class="code-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="code-title">terminal</span>
+                </div>
+                <div class="code-body">
+                    <p><span class="prompt">$</span> <span class="cmd">whoami</span></p>
+                    <p class="output">future_pentester</p>
+                    <p><span class="prompt">$</span> <span class="cmd">cat skills.txt</span></p>
+                    <p class="output">XSS, SQLi, IDOR, API Security...</p>
+                    <p><span class="prompt">$</span> <span class="cmd">./start_learning.sh</span></p>
+                    <p class="output success">✓ Ready to hack (ethically)!</p>
+                    <p><span class="prompt">$</span> <span class="cursor">_</span></p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- POURQUOI CE PARCOURS -->
+    <section class="section" id="why">
+        <div class="container">
+            <div class="section-header">
+                <h2>Pourquoi ce parcours ?</h2>
+                <p>Apprendre la sécurité web peut être overwhelming. Ce parcours résout ce problème.</p>
+            </div>
+            
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">😵</div>
+                    <h3>Le problème</h3>
+                    <p>"Je ne sais pas par où commencer. Il y a trop de ressources, trop de sujets..."</p>
+                </div>
+                <div class="arrow">→</div>
+                <div class="solution-card">
+                    <div class="solution-icon">✅</div>
+                    <h3>La solution</h3>
+                    <p>Un parcours linéaire, semaine par semaine, avec exactement ce qu'il faut apprendre.</p>
+                </div>
+            </div>
+
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">📚</div>
+                    <h3>Le problème</h3>
+                    <p>"Dois-je tout apprendre en JavaScript ? C'est tellement vaste..."</p>
+                </div>
+                <div class="arrow">→</div>
+                <div class="solution-card">
+                    <div class="solution-icon">✅</div>
+                    <h3>La solution</h3>
+                    <p>Une liste précise : 25 leçons JS essentielles (~7h). Le reste, tu l'ignores.</p>
+                </div>
+            </div>
+
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">📝</div>
+                    <h3>Le problème</h3>
+                    <p>"J'apprends mais je n'ai rien à montrer aux recruteurs..."</p>
+                </div>
+                <div class="arrow">→</div>
+                <div class="solution-card">
+                    <div class="solution-icon">✅</div>
+                    <h3>La solution</h3>
+                    <p>Chaque semaine = des writeups et livrables concrets pour ton portfolio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARCOURS OVERVIEW -->
+    <section class="section section-dark" id="overview">
+        <div class="container">
+            <div class="section-header">
+                <h2>Vue d'ensemble du parcours</h2>
+                <p>8 semaines pour passer de débutant à opérationnel</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">0</div>
+                    <div class="timeline-content">
+                        <h3>Setup</h3>
+                        <p>Installe ton environnement (proxy, cible locale, portfolio)</p>
+                        <span class="timeline-tag">1 jour</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h3>Fondamentaux HTTP & Proxy</h3>
+                        <p>Comprends comment le web fonctionne et maîtrise ton outil principal</p>
+                        <span class="timeline-tag">Semaine 1</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h3>Contrôles d'accès (IDOR)</h3>
+                        <p>Les failles les plus courantes et les plus recherchées</p>
+                        <span class="timeline-tag">Semaine 2</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h3>XSS (Cross-Site Scripting)</h3>
+                        <p>Injecte du JavaScript malicieux dans les pages web</p>
+                        <span class="timeline-tag">Semaine 3</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <h3>SQL Injection</h3>
+                        <p>Manipule les bases de données via des entrées malformées</p>
+                        <span class="timeline-tag">Semaine 4</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">5</div>
+                    <div class="timeline-content">
+                        <h3>API Security</h3>
+                        <p>Teste les APIs REST, JWT, et endpoints modernes</p>
+                        <span class="timeline-tag">Semaine 5</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">6</div>
+                    <div class="timeline-content">
+                        <h3>Spécialisation</h3>
+                        <p>SSRF, File Upload ou Path Traversal — choisis et maîtrise</p>
+                        <span class="timeline-tag">Semaine 6</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">7</div>
+                    <div class="timeline-content">
+                        <h3>Projet : Rapport d'audit</h3>
+                        <p>Réalise un mini-audit complet avec rapport professionnel</p>
+                        <span class="timeline-tag">Semaine 7</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">8</div>
+                    <div class="timeline-content">
+                        <h3>Portfolio & CV</h3>
+                        <p>Finalise tes livrables et prépare-toi aux entretiens</p>
+                        <span class="timeline-tag">Semaine 8</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-center">
+                <a href="roadmap.html" class="btn btn-primary btn-large">
+                    Voir le programme détaillé →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRÉREQUIS -->
+    <section class="section" id="prerequisites">
+        <div class="container">
+            <div class="section-header">
+                <h2>Prérequis</h2>
+                <p>Ce dont tu as besoin avant de commencer</p>
+            </div>
+
+            <div class="prereq-grid">
+                <div class="prereq-card essential">
+                    <div class="prereq-header">
+                        <span class="prereq-icon">💻</span>
+                        <span class="prereq-badge essential">Essentiel</span>
+                    </div>
+                    <h3>Un ordinateur</h3>
+                    <p>Linux recommandé (ou VM Kali), mais Windows/Mac fonctionnent aussi.</p>
+                </div>
+
+                <div class="prereq-card essential">
+                    <div class="prereq-header">
+                        <span class="prereq-icon">🌐</span>
+                        <span class="prereq-badge essential">Essentiel</span>
+                    </div>
+                    <h3>Bases HTML/CSS</h3>
+                    <p>Savoir ce qu'est une balise, un attribut, un formulaire.</p>
+                </div>
+
+                <div class="prereq-card essential">
+                    <div class="prereq-header">
+                        <span class="prereq-icon">📜</span>
+                        <span class="prereq-badge essential">Essentiel</span>
+                    </div>
+                    <h3>JavaScript (bases)</h3>
+                    <p>Variables, fonctions, objets, DOM. <a href="javascript-essentials.html">Voir notre guide →</a></p>
+                </div>
+
+                <div class="prereq-card recommended">
+                    <div class="prereq-header">
+                        <span class="prereq-icon">🐧</span>
+                        <span class="prereq-badge recommended">Recommandé</span>
+                    </div>
+                    <h3>Ligne de commande</h3>
+                    <p>Savoir naviguer, lancer des commandes basiques (cd, ls, cat, curl).</p>
+                </div>
+
+                <div class="prereq-card recommended">
+                    <div class="prereq-header">
+                        <span class="prereq-icon">🐳</span>
+                        <span class="prereq-badge recommended">Recommandé</span>
+                    </div>
+                    <h3>Docker</h3>
+                    <p>Pour lancer facilement les cibles de test (Juice Shop, etc.).</p>
+                </div>
+
+                <div class="prereq-card optional">
+                    <div class="prereq-header">
+                        <span class="prereq-icon">🐍</span>
+                        <span class="prereq-badge optional">Optionnel</span>
+                    </div>
+                    <h3>Python (bases)</h3>
+                    <p>Utile pour automatiser, mais pas nécessaire pour commencer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="section section-cta">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Prêt à commencer ?</h2>
+                <p>Choisis ton point de départ selon ton niveau actuel</p>
+                <div class="cta-buttons">
+                    <a href="javascript-essentials.html" class="btn btn-outline">
+                        <span>📚</span>
+                        <div>
+                            <strong>J'ai besoin des bases JS</strong>
+                            <small>Commence par là</small>
+                        </div>
+                    </a>
+                    <a href="roadmap.html" class="btn btn-primary">
+                        <span>🚀</span>
+                        <div>
+                            <strong>Je connais JS</strong>
+                            <small>Lance le parcours 8 semaines</small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="logo-icon">🛡️</span>
+                    <span class="logo-text">WebSec Academy</span>
+                    <p>Apprends la sécurité web de manière structurée et efficace.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="roadmap.html">Roadmap</a></li>
+                        <li><a href="javascript-essentials.html">JavaScript</a></li>
+                        <li><a href="outils.html">Outils</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Ressources</h4>
+                    <ul>
+                        <li><a href="ressources.html">Liens utiles</a></li>
+                        <li><a href="cheatsheets.html">Cheat Sheets</a></li>
+                        <li><a href="https://portswigger.net/web-security" target="_blank">PortSwigger Academy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>⚠️ Pratique uniquement sur des cibles autorisées (labs, bug bounty avec permission).</p>
+                <p>Créé pour la communauté WebSec 🛡️</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
